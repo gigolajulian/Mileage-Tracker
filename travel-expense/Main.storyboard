@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kle-a8-IwB">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Travel Expense-->
+        <scene sceneID="urX-ih-P6n">
+            <objects>
+                <tableViewController id="qWk-3q-yVP" customClass="TripListTableViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jiv-PT-DOO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tripCell" textLabel="nmW-Tn-MJ7" detailTextLabel="yg1-Nw-4d8" style="IBUITableViewCellStyleSubtitle" id="qeB-MU-raw">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qeB-MU-raw" id="vGW-Nb-Ics">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nmW-Tn-MJ7">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yg1-Nw-4d8">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="cQi-lj-I6e" kind="push" identifier="update" id="Jfq-2Z-Rjy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qWk-3q-yVP" id="wXu-ej-79Q"/>
+                            <outlet property="delegate" destination="qWk-3q-yVP" id="lcG-N7-H4C"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Travel Expense" id="aqw-5q-aOh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ELo-GP-JjT">
+                            <connections>
+                                <segue destination="cQi-lj-I6e" kind="push" id="NJh-tI-3be"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9dy-Uf-oZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="-821"/>
+        </scene>
+        <!--Report View Controller-->
+        <scene sceneID="HCN-TR-BoK">
+            <objects>
+                <viewController id="gtl-lQ-bs2" customClass="ReportViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yYZ-kp-diq"/>
+                        <viewControllerLayoutGuide type="bottom" id="CAk-cp-HCc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nYC-RT-nFl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trip Reports" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piv-81-yPU">
+                                <rect key="frame" x="16" y="72" width="105" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkM-lP-FJm">
+                                <rect key="frame" x="16" y="107" width="313" height="96"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OjR-My-1ma"/>
+                    <connections>
+                        <outlet property="labelReports" destination="dkM-lP-FJm" id="LqC-wp-kEM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tqk-5q-Tk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="781" y="-826"/>
+        </scene>
+        <!--Enter Trip Details-->
+        <scene sceneID="9kE-bA-5nL">
+            <objects>
+                <viewController title="Enter Trip Details" id="cQi-lj-I6e" customClass="TripViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="maR-6S-ZkE"/>
+                        <viewControllerLayoutGuide type="bottom" id="nOJ-hr-JCv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gfz-aH-ldL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Trip Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msd-5r-CdO">
+                                <rect key="frame" x="79" y="64" width="256" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kxb-7C-P2k">
+                                <rect key="frame" x="16" y="93" width="337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Origin" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1UM-Cz-XyO">
+                                <rect key="frame" x="16" y="131" width="337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Destination" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJ5-lI-hED">
+                                <rect key="frame" x="16" y="169" width="337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Arrival Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHS-l1-LYo">
+                                <rect key="frame" x="16" y="207" width="337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Departure Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KC2-tO-JFZ">
+                                <rect key="frame" x="16" y="245" width="337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Distance" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QOa-yU-Imz">
+                                <rect key="frame" x="16" y="283" width="337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Cost" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xCp-HW-esV">
+                                <rect key="frame" x="16" y="321" width="337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Description..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="68C-nv-cTy">
+                                <rect key="frame" x="16" y="359" width="337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Trip" id="UyM-NA-A3s">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qbL-CE-cpO">
+                            <connections>
+                                <action selector="buttonCancel:" destination="cQi-lj-I6e" id="2Qh-Iw-eQq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="uLx-tA-iw6">
+                            <connections>
+                                <action selector="butttonSave:" destination="cQi-lj-I6e" id="hc0-74-dTf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="textFieldArrival" destination="ZHS-l1-LYo" id="rLY-eH-JUN"/>
+                        <outlet property="textFieldDeparture" destination="KC2-tO-JFZ" id="qGA-Vm-vra"/>
+                        <outlet property="textFieldDestination" destination="pJ5-lI-hED" id="r7D-SY-HvP"/>
+                        <outlet property="textFieldOrigin" destination="1UM-Cz-XyO" id="Puw-hw-eex"/>
+                        <outlet property="textFieldTotalCost" destination="xCp-HW-esV" id="OYa-V7-2DC"/>
+                        <outlet property="textFieldTotalDistance" destination="QOa-yU-Imz" id="5RT-YO-mVp"/>
+                        <outlet property="textFieldTrip" destination="Kxb-7C-P2k" id="1qm-7k-Kpg"/>
+                        <outlet property="textFieldTripDescription" destination="68C-nv-cTy" id="y0S-Le-emc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ok6-CI-CnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="63"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="IZT-ZE-r0Y">
+            <objects>
+                <viewController id="aXg-H4-YgS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Aba-ML-3CH"/>
+                        <viewControllerLayoutGuide type="bottom" id="wUV-T2-xHf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="juL-r7-Azc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vc0-3N-xCa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="izj-wl-q9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1277" y="-826"/>
+        </scene>
+        <!--Trips-->
+        <scene sceneID="Q3k-jk-Vay">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qJ1-hF-Ntv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Trips" id="3h0-Sk-Uzb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6yO-h4-tY2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qWk-3q-yVP" kind="relationship" relationship="rootViewController" id="r4t-3z-DfI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PIx-4u-H5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="-1748"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="7DT-RM-nbS">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kle-a8-IwB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="WFr-bO-15N">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qJ1-hF-Ntv" kind="relationship" relationship="viewControllers" id="jOt-0S-Q1v"/>
+                        <segue destination="nj6-9D-6Fl" kind="relationship" relationship="viewControllers" id="rMK-Yp-u9l"/>
+                        <segue destination="okh-O4-Gti" kind="relationship" relationship="viewControllers" id="ECJ-x7-DS0"/>
+                        <segue destination="fWf-9m-1u9" kind="relationship" relationship="viewControllers" id="TQO-oz-w16"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdt-cr-pjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1041" y="-2695"/>
+        </scene>
+        <!--Reports-->
+        <scene sceneID="3V8-g8-q7D">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nj6-9D-6Fl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reports" id="0CX-pR-pQ8"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AWZ-ec-il5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gtl-lQ-bs2" kind="relationship" relationship="rootViewController" id="OFC-fY-iWc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6P-jj-nms" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="787" y="-1748"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bQs-ap-AUf">
+            <objects>
+                <viewController id="nyO-gK-cad" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v60-ba-Pta"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ay4-Rn-k9u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rhZ-AY-QcJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bZg-8M-cnK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Iw-GQ-TgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1777" y="-821"/>
+        </scene>
+        <!--View Map-->
+        <scene sceneID="z89-Yb-Z42">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="okh-O4-Gti" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="View Map" id="hYm-c9-adh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ywc-oL-HCN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aXg-H4-YgS" kind="relationship" relationship="rootViewController" id="ZPD-Uv-qZ2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phP-47-e5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1277" y="-1748"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="Hyu-OZ-fmb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fWf-9m-1u9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="About" id="R15-lU-IUT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JFl-oc-wmf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nyO-gK-cad" kind="relationship" relationship="rootViewController" id="tiy-Iz-MZ2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hL5-qO-qBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1777" y="-1748"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Jfq-2Z-Rjy"/>
+    </inferredMetricsTieBreakers>
+</document>
