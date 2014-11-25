@@ -39,11 +39,11 @@ class TripViewController: UIViewController {
         if (existingTripObject != nil) {
             textFieldTrip.text = trip
             textFieldOrigin.text = origin
-            textFieldDestination.text = departureDate
+            textFieldDestination.text = destination
             textFieldDeparture.text = departureDate
             textFieldArrival.text = arrivalDate
             textFieldTotalDistance.text = totalDistance
-            textFieldTotalCost.text = totalDistance
+            textFieldTotalCost.text = totalCost
             textFieldTripDescription.text = tripDescription
         }
     }
