@@ -18,6 +18,13 @@
 		946A37C11A231495005A5ADE /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C01A231495005A5ADE /* Trip.swift */; };
 		946A37C31A234132005A5ADE /* TripDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C21A234132005A5ADE /* TripDataModel.swift */; };
 		946A37C51A234B82005A5ADE /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C41A234B82005A5ADE /* ReportViewController.swift */; };
+		9CEDFEDC1A2518F9003AC502 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFED91A251821003AC502 /* libCorePlot-CocoaTouch.a */; };
+		9CEDFEDE1A25190C003AC502 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFEDD1A25190C003AC502 /* Foundation.framework */; };
+		9CEDFEE01A251911003AC502 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFEDF1A251911003AC502 /* UIKit.framework */; };
+		9CEDFEE21A251924003AC502 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFEE11A251924003AC502 /* CoreGraphics.framework */; };
+		9CEDFEE41A25192B003AC502 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFEE31A25192B003AC502 /* QuartzCore.framework */; };
+		9CEDFEE61A251931003AC502 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFEE51A251931003AC502 /* Accelerate.framework */; };
+		9CEDFEEA1A251B1C003AC502 /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +34,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 946A378F1A22D668005A5ADE;
 			remoteInfo = "travel-expense";
+		};
+		9CEDFED81A251821003AC502 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CEDFED21A251821003AC502 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -46,6 +60,14 @@
 		946A37C01A231495005A5ADE /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		946A37C21A234132005A5ADE /* TripDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDataModel.swift; sourceTree = "<group>"; };
 		946A37C41A234B82005A5ADE /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		9CEDFED21A251821003AC502 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		9CEDFEDD1A25190C003AC502 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9CEDFEDF1A251911003AC502 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9CEDFEE11A251924003AC502 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9CEDFEE31A25192B003AC502 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9CEDFEE51A251931003AC502 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9CEDFEE71A2519D8003AC502 /* travel_expense_bridge_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = travel_expense_bridge_header.h; sourceTree = "<group>"; };
+		9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +75,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEDFEDE1A25190C003AC502 /* Foundation.framework in Frameworks */,
+				9CEDFEE01A251911003AC502 /* UIKit.framework in Frameworks */,
+				9CEDFEE21A251924003AC502 /* CoreGraphics.framework in Frameworks */,
+				9CEDFEDC1A2518F9003AC502 /* libCorePlot-CocoaTouch.a in Frameworks */,
+				9CEDFEE41A25192B003AC502 /* QuartzCore.framework in Frameworks */,
+				9CEDFEE61A251931003AC502 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +97,7 @@
 		946A37871A22D668005A5ADE = {
 			isa = PBXGroup;
 			children = (
+				9CEDFED21A251821003AC502 /* CorePlot-CocoaTouch.xcodeproj */,
 				946A37921A22D668005A5ADE /* travel-expense */,
 				946A37AB1A22D669005A5ADE /* travel-expenseTests */,
 				946A37911A22D668005A5ADE /* Products */,
@@ -87,6 +116,8 @@
 		946A37921A22D668005A5ADE /* travel-expense */ = {
 			isa = PBXGroup;
 			children = (
+				9CEDFEEB1A251C6B003AC502 /* CorePlot Classes */,
+				9CEDFEE81A251A7E003AC502 /* Frameworks */,
 				946A37951A22D669005A5ADE /* AppDelegate.swift */,
 				946A37C41A234B82005A5ADE /* ReportViewController.swift */,
 				946A37BC1A22E527005A5ADE /* TripViewController.swift */,
@@ -105,6 +136,7 @@
 		946A37931A22D669005A5ADE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9CEDFEE71A2519D8003AC502 /* travel_expense_bridge_header.h */,
 				946A37941A22D669005A5ADE /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -125,6 +157,35 @@
 				946A37AD1A22D669005A5ADE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9CEDFED31A251821003AC502 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9CEDFED91A251821003AC502 /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9CEDFEE81A251A7E003AC502 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9CEDFEE51A251931003AC502 /* Accelerate.framework */,
+				9CEDFEE31A25192B003AC502 /* QuartzCore.framework */,
+				9CEDFEE11A251924003AC502 /* CoreGraphics.framework */,
+				9CEDFEDF1A251911003AC502 /* UIKit.framework */,
+				9CEDFEDD1A25190C003AC502 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		9CEDFEEB1A251C6B003AC502 /* CorePlot Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */,
+			);
+			name = "CorePlot Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +255,12 @@
 			mainGroup = 946A37871A22D668005A5ADE;
 			productRefGroup = 946A37911A22D668005A5ADE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9CEDFED31A251821003AC502 /* Products */;
+					ProjectRef = 9CEDFED21A251821003AC502 /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				946A378F1A22D668005A5ADE /* travel-expense */,
@@ -201,6 +268,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9CEDFED91A251821003AC502 /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 9CEDFED81A251821003AC502 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		946A378E1A22D668005A5ADE /* Resources */ = {
@@ -233,6 +310,7 @@
 				946A37BD1A22E527005A5ADE /* TripViewController.swift in Sources */,
 				946A37991A22D669005A5ADE /* travel_expense.xcdatamodeld in Sources */,
 				946A37961A22D669005A5ADE /* AppDelegate.swift in Sources */,
+				9CEDFEEA1A251B1C003AC502 /* PieChartViewController.swift in Sources */,
 				946A37C51A234B82005A5ADE /* ReportViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,10 +426,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "travel-expense/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "travel-expense/travel_expense_bridge_header.h";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/framework/**";
 			};
 			name = Debug;
 		};
@@ -359,10 +444,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "travel-expense/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "travel-expense/travel_expense_bridge_header.h";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/framework/**";
 			};
 			name = Release;
 		};

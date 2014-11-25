@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="297" y="-821"/>
         </scene>
-        <!--Report View Controller-->
+        <!--Pie Chart View Controller-->
         <scene sceneID="HCN-TR-BoK">
             <objects>
-                <viewController id="gtl-lQ-bs2" customClass="ReportViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gtl-lQ-bs2" customClass="PieChartViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yYZ-kp-diq"/>
                         <viewControllerLayoutGuide type="bottom" id="CAk-cp-HCc"/>
@@ -78,12 +78,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R45-gf-ggc" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="16" y="123" width="382" height="435"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="OjR-My-1ma"/>
                     <connections>
-                        <outlet property="labelReports" destination="dkM-lP-FJm" id="LqC-wp-kEM"/>
+                        <outlet property="hostingView" destination="R45-gf-ggc" id="zCr-Ce-thK"/>
+                        <outlet property="statusBar" destination="piv-81-yPU" id="UPy-Rh-7NZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqk-5q-Tk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
