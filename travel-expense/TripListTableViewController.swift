@@ -72,7 +72,7 @@ class TripListTableViewController: UITableViewController {
 
         if let indexPathUnwrapped = indexPath? {
             var tripObject : Trip = tripList[indexPathUnwrapped.row] as Trip
-            cell.textLabel!.text = tripObject.trip
+            cell.textLabel.text = tripObject.trip
             cell.detailTextLabel?.text = tripObject.departureDate + " - " + tripObject.tripDescription
         }
 

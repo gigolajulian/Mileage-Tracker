@@ -124,11 +124,11 @@
 				946A37C41A234B82005A5ADE /* ReportViewController.swift */,
 				946A37BC1A22E527005A5ADE /* TripViewController.swift */,
 				946A37BA1A22E50D005A5ADE /* TripListTableViewController.swift */,
-				946A37B81A22D7DC005A5ADE /* Main.storyboard */,
 				946A37971A22D669005A5ADE /* travel_expense.xcdatamodeld */,
 				946A37C21A234132005A5ADE /* TripDataModel.swift */,
 				946A37C01A231495005A5ADE /* Trip.swift */,
 				946A379F1A22D669005A5ADE /* Images.xcassets */,
+				946A37B81A22D7DC005A5ADE /* Main.storyboard */,
 				946A37A11A22D669005A5ADE /* LaunchScreen.xib */,
 				946A37931A22D669005A5ADE /* Supporting Files */,
 			);

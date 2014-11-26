@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kle-a8-IwB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C68k" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kle-a8-IwB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Travel Expense-->
@@ -33,7 +33,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="cQi-lj-I6e" kind="push" identifier="update" id="Jfq-2Z-Rjy"/>
+                                    <segue destination="cQi-lj-I6e" kind="show" id="a4x-pE-PWl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -45,7 +45,7 @@
                     <navigationItem key="navigationItem" title="Travel Expense" id="aqw-5q-aOh">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ELo-GP-JjT">
                             <connections>
-                                <segue destination="cQi-lj-I6e" kind="push" identifier="newTrip" id="NJh-tI-3be"/>
+                                <segue destination="cQi-lj-I6e" kind="show" id="jRv-oe-PRV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ok6-CI-CnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="297" y="63"/>
+            <point key="canvasLocation" x="297" y="81"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="IZT-ZE-r0Y">
@@ -324,6 +324,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jfq-2Z-Rjy"/>
+        <segue reference="jRv-oe-PRV"/>
     </inferredMetricsTieBreakers>
 </document>
