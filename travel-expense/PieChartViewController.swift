@@ -14,36 +14,53 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
     @IBOutlet var statusBar:UILabel!
     
     private var pieGraph : CPTXYGraph? = nil
+    private var theme_:CPTTheme! = nil
     
     let dataForChart = [20.0, 30.0, 60.0, 83.0,1.0]
     
     // MARK: Initialization
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        theme_ = (GraphTheme())
+            .setBackground({
+                (graph:CPTGraph) in
+                graph.fill = CPTFill(color:CPTColor.redColor())
+                // Paddings
+                graph.paddingLeft   = 5.0
+                graph.paddingRight  = 5.0
+                graph.paddingTop    = 5.0
+                graph.paddingBottom = 5.0
+                // font styles
+                var whiteText:CPTMutableTextStyle = CPTMutableTextStyle()
+                whiteText.color = CPTColor.whiteColor()
+                graph.titleTextStyle = whiteText })
+            .setAxisSet({
+                (axisSet:CPTAxisSet) in
+                let xyAxisSet:CPTXYAxisSet = axisSet as CPTXYAxisSet
+                
+                // x and y axis not drawn
+                xyAxisSet.xAxis.axisLineStyle = nil
+                xyAxisSet.yAxis.axisLineStyle = nil })
+            .setPlotArea({
+                (plotAreaFrame:CPTPlotAreaFrame) in
+                plotAreaFrame.fill = CPTFill(color:CPTColor.grayColor())})
+        
+    }
+    
     override func viewDidAppear(animated : Bool)
     {
         super.viewDidAppear(animated)
         
-        // Create graph from theme
         let newGraph = CPTXYGraph()
-        newGraph.applyTheme(CPTTheme(named: kCPTDarkGradientTheme))
-        
+        newGraph.applyTheme(theme_)
         hostingView.hostedGraph = newGraph
         
-        // Paddings
-        newGraph.paddingLeft   = 20.0
-        newGraph.paddingRight  = 20.0
-        newGraph.paddingTop    = 20.0
-        newGraph.paddingBottom = 20.0
-        
-        newGraph.axisSet = nil
-        
-        let whiteText = CPTMutableTextStyle()
-        whiteText.color = CPTColor.whiteColor()
-        
-        newGraph.titleTextStyle = whiteText
         newGraph.title          = "Graph Title"
         
-        // Add pie chart
+        // pie chart settings
         let piePlot = CPTPieChart()
         piePlot.dataSource      = self
         piePlot.pieRadius       = 131.0
@@ -53,6 +70,8 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         piePlot.centerAnchor    = CGPoint(x: 0.5, y: 0.38)
         piePlot.borderLineStyle = CPTLineStyle()
         piePlot.delegate        = self
+        
+        // add pie chart
         newGraph.addPlot(piePlot)
         
         self.pieGraph = newGraph

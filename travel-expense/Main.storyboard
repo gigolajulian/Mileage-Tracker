@@ -80,7 +80,7 @@
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R45-gf-ggc" customClass="CPTGraphHostingView">
                                 <rect key="frame" x="16" y="123" width="382" height="435"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.89642168030000002" green="1" blue="0.94175124970000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqk-5q-Tk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="781" y="-826"/>
+            <point key="canvasLocation" x="787" y="-821"/>
         </scene>
         <!--Enter Trip Details-->
         <scene sceneID="9kE-bA-5nL">
@@ -324,6 +324,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NJh-tI-3be"/>
+        <segue reference="Jfq-2Z-Rjy"/>
     </inferredMetricsTieBreakers>
 </document>
