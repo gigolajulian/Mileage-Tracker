@@ -18,6 +18,7 @@
 		946A37C11A231495005A5ADE /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C01A231495005A5ADE /* Trip.swift */; };
 		946A37C31A234132005A5ADE /* TripDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C21A234132005A5ADE /* TripDataModel.swift */; };
 		946A37C51A234B82005A5ADE /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C41A234B82005A5ADE /* ReportViewController.swift */; };
+		9C4AF6611A267EB3002E697E /* DEV_DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */; };
 		9CE7DCA41A2562AC00968DB8 /* GraphTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7DCA31A2562AC00968DB8 /* GraphTheme.swift */; };
 		9CEDFEDC1A2518F9003AC502 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFED91A251821003AC502 /* libCorePlot-CocoaTouch.a */; };
 		9CEDFEDE1A25190C003AC502 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFEDD1A25190C003AC502 /* Foundation.framework */; };
@@ -61,6 +62,7 @@
 		946A37C01A231495005A5ADE /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		946A37C21A234132005A5ADE /* TripDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDataModel.swift; sourceTree = "<group>"; };
 		946A37C41A234B82005A5ADE /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DEV_DataEntryViewController.swift; sourceTree = "<group>"; };
 		9CE7DCA31A2562AC00968DB8 /* GraphTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphTheme.swift; sourceTree = "<group>"; };
 		9CEDFED21A251821003AC502 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		9CEDFEDD1A25190C003AC502 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -118,6 +120,7 @@
 		946A37921A22D668005A5ADE /* travel-expense */ = {
 			isa = PBXGroup;
 			children = (
+				9C4AF65A1A267CDE002E697E /* DEV */,
 				9CEDFEEB1A251C6B003AC502 /* CorePlot Classes */,
 				9CEDFEE81A251A7E003AC502 /* Frameworks */,
 				946A37951A22D669005A5ADE /* AppDelegate.swift */,
@@ -159,6 +162,14 @@
 				946A37AD1A22D669005A5ADE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C4AF65A1A267CDE002E697E /* DEV */ = {
+			isa = PBXGroup;
+			children = (
+				9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */,
+			);
+			name = DEV;
 			sourceTree = "<group>";
 		};
 		9CEDFED31A251821003AC502 /* Products */ = {
@@ -316,6 +327,7 @@
 				9CE7DCA41A2562AC00968DB8 /* GraphTheme.swift in Sources */,
 				9CEDFEEA1A251B1C003AC502 /* PieChartViewController.swift in Sources */,
 				946A37C51A234B82005A5ADE /* ReportViewController.swift in Sources */,
+				9C4AF6611A267EB3002E697E /* DEV_DataEntryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

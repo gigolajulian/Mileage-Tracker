@@ -10,19 +10,95 @@ import UIKit
 
 class PieChartViewController: UIViewController, CPTPieChartDataSource {
     
+    private let coreData_:TripDataModel = TripDataModel()
+    
     @IBOutlet var hostingView:CPTGraphHostingView!
     @IBOutlet var statusBar:UILabel!
+    @IBOutlet var testYear:UITextField!
+    
+    @IBAction func changeYear(sender: UIButton) {
+        
+        // https://github.com/vandadnp/iOS-8-Swift-Programming-Cookbook/blob/master/chapter-concurrency/Grouping%20Tasks%20Together/Grouping%20Tasks%20Together/ViewController.swift
+        
+        let taskGroup = dispatch_group_create()
+        let mainQueue = dispatch_get_main_queue()
+        /* Reload the table view on the main queue */
+        dispatch_group_async(taskGroup, mainQueue, {[weak self] in
+            println("get it... again")
+            self!.dataForChart.removeAll(keepCapacity: true)
+            self!.fetchData(year: (self!.testYear.text as NSString).integerValue)
+            self!.piePlot.reloadData()
+        });
+        
+    }
     
     private var pieGraph : CPTXYGraph? = nil
     private var theme_:CPTTheme! = nil
+    private var piePlot:CPTPieChart!
+    var dataForChart:[Float] = []
     
-    let dataForChart = [20.0, 30.0, 60.0, 83.0,1.0]
+    func fetchData(year:Int = 2014) {
+        
+        let req = coreData_.getFetchRequest()
+        
+        // create query date for the year 2014
+        let caln:NSCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        let startcomp:NSDateComponents = NSDateComponents()
+        startcomp.year = year
+        startcomp.month = 1
+        startcomp.day = 1
+        startcomp.hour = 0
+        startcomp.minute = 0
+        startcomp.second = 0
+        let startDate:NSDate! = caln.dateFromComponents(startcomp)
+        
+        let endcomp:NSDateComponents = NSDateComponents()
+        endcomp.year = year
+        endcomp.month = 12
+        endcomp.day = 31
+        endcomp.hour = 23
+        endcomp.minute = 59
+        endcomp.second = 59
+        let endDate:NSDate! = caln.dateFromComponents(endcomp)
+        
+        // assign predicate
+        let startpredicate:NSPredicate = NSPredicate(format: "(zDev_arrivalDate >= %@)",startDate)
+        let endpredicate:NSPredicate = NSPredicate(format: "(zDev_arrivalDate <= %@)",endDate)
+        req.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [startpredicate,endpredicate])
+    
+        // execute fetch request
+        var error:NSError?
+        let ctx = coreData_.getManageObjectContext()
+        let result = ctx.executeFetchRequest(req, error: &error) as [Trip]
+        
+        if (error == nil) {
+            // load numbers into data
+            for (var i = 0, len = result.count; i < len; i++) {
+                var e:Trip = result[i]
+                dataForChart.append(e.zDev_totalCost)
+            }
+        } else {
+            println(error)
+        }
+    }
     
     // MARK: Initialization
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        let taskGroup = dispatch_group_create()
+        let mainQueue = dispatch_get_main_queue()
+        /* Reload the table view on the main queue */
+        dispatch_group_async(taskGroup, mainQueue, {[weak self] in
+            //self!.fetchData()
+            println("get it...")
+            self!.fetchData()
+            self!.hostingView.setNeedsDisplay()
+
+        });
+        
         
         theme_ = (GraphTheme())
             .setBackground({
@@ -48,6 +124,8 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
                 (plotAreaFrame:CPTPlotAreaFrame) in
                 plotAreaFrame.fill = CPTFill(color:CPTColor.grayColor())})
         
+        //fetchData()
+        
     }
     
     override func viewDidAppear(animated : Bool)
@@ -61,7 +139,7 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         newGraph.title          = "Graph Title"
         
         // pie chart settings
-        let piePlot = CPTPieChart()
+        piePlot = CPTPieChart()
         piePlot.dataSource      = self
         piePlot.pieRadius       = 131.0
         piePlot.identifier      = "Pie Chart 1"
@@ -75,6 +153,8 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         newGraph.addPlot(piePlot)
         
         self.pieGraph = newGraph
+        
+        println("view did appear")
     }
     
     // MARK: - Plot Data Source Methods
@@ -97,7 +177,6 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
                 return recordIndex as NSNumber
             }
         }
-        
     }
     
     func dataLabelForPlot(plot: CPTPlot!, recordIndex: UInt) -> CPTLayer!
@@ -124,7 +203,7 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         
         return offset
     }
-    
+   
     // MARK: - Delegate Methods
     
     func pieChart(plot: CPTPlot!, sliceWasSelectedAtRecordIndex recordIndex: UInt)
