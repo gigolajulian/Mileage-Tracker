@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kle-a8-IwB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kle-a8-IwB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Travel Expense-->
@@ -67,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trip Reports" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piv-81-yPU">
-                                <rect key="frame" x="16" y="72" width="105" height="21"/>
+                                <rect key="frame" x="16" y="72" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -78,17 +79,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R45-gf-ggc" customClass="CPTGraphHostingView">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R45-gf-ggc" customClass="CPTGraphHostingView">
                                 <rect key="frame" x="16" y="123" width="382" height="435"/>
                                 <color key="backgroundColor" red="0.89642168030000002" green="1" blue="0.94175124970000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4UU-Ia-jsA">
+                                <rect key="frame" x="16" y="577" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKS-UY-zUJ">
+                                <rect key="frame" x="149" y="576" width="97" height="30"/>
+                                <color key="backgroundColor" red="0.35112989160000002" green="0.8763610838" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Change Year">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeYear:" destination="gtl-lQ-bs2" eventType="touchUpInside" id="ggb-DP-bTg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4UU-Ia-jsA" firstAttribute="top" secondItem="R45-gf-ggc" secondAttribute="bottom" constant="19" id="4Ob-5B-rAf"/>
+                            <constraint firstItem="R45-gf-ggc" firstAttribute="leading" secondItem="nYC-RT-nFl" secondAttribute="leadingMargin" id="5Pn-lQ-Agg"/>
+                            <constraint firstItem="R45-gf-ggc" firstAttribute="trailing" secondItem="nYC-RT-nFl" secondAttribute="trailingMargin" id="9nh-Ul-H9Y"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OjR-My-1ma"/>
                     <connections>
                         <outlet property="hostingView" destination="R45-gf-ggc" id="zCr-Ce-thK"/>
                         <outlet property="statusBar" destination="piv-81-yPU" id="UPy-Rh-7NZ"/>
+                        <outlet property="testYear" destination="4UU-Ia-jsA" id="dLC-Iy-4Cg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqk-5q-Tk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,11 +262,78 @@
                         <segue destination="nj6-9D-6Fl" kind="relationship" relationship="viewControllers" id="rMK-Yp-u9l"/>
                         <segue destination="okh-O4-Gti" kind="relationship" relationship="viewControllers" id="ECJ-x7-DS0"/>
                         <segue destination="fWf-9m-1u9" kind="relationship" relationship="viewControllers" id="TQO-oz-w16"/>
+                        <segue destination="hUs-MQ-6Dp" kind="relationship" relationship="viewControllers" id="85o-b0-XCS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdt-cr-pjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1041" y="-2695"/>
+        </scene>
+        <!--DEV_DataEntry-->
+        <scene sceneID="4jK-0I-csh">
+            <objects>
+                <viewController id="hUs-MQ-6Dp" customClass="DEV_DataEntryViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="406-KS-Pwd"/>
+                        <viewControllerLayoutGuide type="bottom" id="yxM-qU-5kX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sGq-B9-o3b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="For dev only" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1x-EX-78K">
+                                <rect key="frame" x="186" y="41" width="95" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.23470107139999999" blue="0.11944129570000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eSS-pn-zn2">
+                                <rect key="frame" x="105" y="102" width="205" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Cost" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pcb-KB-1Q9">
+                                <rect key="frame" x="105" y="176" width="205" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-rM-Vqa">
+                                <rect key="frame" x="57" y="239" width="300" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="438730712.79847002">
+                                    <!--2014-11-26 21:38:32 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTh-p8-Oo2">
+                                <rect key="frame" x="129" y="440" width="157" height="30"/>
+                                <color key="backgroundColor" red="0.35112989160000002" green="0.8763610838" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitData:" destination="hUs-MQ-6Dp" eventType="touchUpInside" id="88Y-7L-EXV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Mff-rM-Vqa" secondAttribute="centerX" id="I6F-eQ-pdU"/>
+                            <constraint firstAttribute="centerX" secondItem="eSS-pn-zn2" secondAttribute="centerX" constant="-0.5" id="J0u-u5-xZl"/>
+                            <constraint firstAttribute="centerX" secondItem="Pcb-KB-1Q9" secondAttribute="centerX" constant="-0.5" id="OY7-Bq-mVv"/>
+                            <constraint firstAttribute="centerX" secondItem="C1x-EX-78K" secondAttribute="centerX" constant="-26.5" id="URg-YG-vye"/>
+                            <constraint firstAttribute="centerX" secondItem="GTh-p8-Oo2" secondAttribute="centerX" constant="-0.5" id="gid-aY-TM2"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="DEV_DataEntry" id="cqC-R8-K8P"/>
+                    <connections>
+                        <outlet property="costTextbox" destination="Pcb-KB-1Q9" id="bNc-WV-lqU"/>
+                        <outlet property="datePick" destination="Mff-rM-Vqa" id="VRf-dZ-SXj"/>
+                        <outlet property="nameTextbox" destination="eSS-pn-zn2" id="rJL-rd-9Kz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPd-sv-Ris" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2242" y="-1748"/>
         </scene>
         <!--Reports-->
         <scene sceneID="3V8-g8-q7D">

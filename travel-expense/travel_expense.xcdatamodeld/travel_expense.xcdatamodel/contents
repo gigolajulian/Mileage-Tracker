@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Trip" representedClassName="Trip" syncable="YES">
         <attribute name="arrivalDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="departureDate" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,8 +9,12 @@
         <attribute name="totalDistance" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tripDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zDev_arrivalDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="zDev_departureDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="zDev_totalCost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="zDev_totalDistance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Trip" positionX="-54" positionY="-9" width="128" height="165"/>
+        <element name="Trip" positionX="-54" positionY="-9" width="128" height="225"/>
     </elements>
 </model>

@@ -21,4 +21,21 @@ class Trip: NSManagedObject {
     @NSManaged var totalCost: String
     @NSManaged var tripDescription: String
     
+    // Following for dev purposes only
+    @NSManaged var zDev_totalCost: Float
+    @NSManaged var zDev_arrivalDate: NSDate
+    
+    override func awakeFromInsert() {
+        // default values
+        self.trip = ""
+        self.origin = ""
+        self.destination = ""
+        self.departureDate = ""
+        self.arrivalDate = ""
+        self.totalDistance = ""
+        self.totalCost = ""
+        self.tripDescription = ""
+        self.zDev_totalCost = 0
+        self.zDev_arrivalDate = NSDate()
+    }
 }
