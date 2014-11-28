@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TripViewController: UIViewController {
+class TripViewController: UIViewController, UITextFieldDelegate {
     
     let coreData: TripDataModel = TripDataModel()
     
@@ -32,9 +32,31 @@ class TripViewController: UIViewController {
 
     // Trip object to represent existing trip to update.
     var existingTripObject: Trip!
+
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        // Hide keyboard when clicking away from text field.
+        self.view.endEditing(true)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide keyboard when 'return' key is pressed.
+
+        textField.resignFirstResponder()
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Set text fields to clear keyboard on 'return' key.
+        textFieldTrip.delegate = self
+        textFieldOrigin.delegate = self
+        textFieldDestination.delegate = self
+        textFieldDeparture.delegate = self
+        textFieldArrival.delegate = self
+        textFieldTotalDistance.delegate = self
+        textFieldTotalCost.delegate = self
+        textFieldTripDescription.delegate = self
         
         if (existingTripObject != nil) {
             textFieldTrip.text = trip
