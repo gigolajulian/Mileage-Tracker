@@ -154,11 +154,17 @@
                                 <rect key="frame" x="16" y="207" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="arrivalDatePicker:" destination="cQi-lj-I6e" eventType="editingDidEnd" id="vm6-SD-X8K"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Departure Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KC2-tO-JFZ">
                                 <rect key="frame" x="16" y="258" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="departureDatePicker:" destination="cQi-lj-I6e" eventType="editingDidEnd" id="xGV-Xg-5Lf"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Distance" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QOa-yU-Imz">
                                 <rect key="frame" x="16" y="303" width="337" height="30"/>

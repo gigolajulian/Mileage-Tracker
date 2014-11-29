@@ -32,6 +32,37 @@ class TripViewController: UIViewController, UITextFieldDelegate {
 
     // Trip object to represent existing trip to update.
     var existingTripObject: Trip!
+    
+    @IBAction func arrivalDatePicker(sender: UITextField) {
+        // Create a date pick for arrival date field.
+        
+        var datePickerView  : UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: Selector("arrivaDateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    @IBAction func departureDatePicker(sender: UITextField) {
+        // Create a date picker for departure date field.
+        
+        var datePickerView  : UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: Selector("departureDateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+
+    func arrivaDateChanged(sender: UIDatePicker) {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        textFieldArrival.text = dateFormatter.stringFromDate(sender.date)
+    }
+
+    func departureDateChanged(sender: UIDatePicker) {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        textFieldDeparture.text = dateFormatter.stringFromDate(sender.date)
+    }
+    
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         // Hide keyboard when clicking away from text field.
