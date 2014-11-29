@@ -15,10 +15,10 @@ class Trip: NSManagedObject {
     @NSManaged var trip: String
     @NSManaged var origin: String
     @NSManaged var destination: String
-    @NSManaged var departureDate: String
-    @NSManaged var arrivalDate: String
-    @NSManaged var totalDistance: String
-    @NSManaged var totalCost: String
+    @NSManaged var departureDate: NSDate
+    @NSManaged var arrivalDate: NSDate
+    @NSManaged var totalDistance: Float
+    @NSManaged var totalCost: Float
     @NSManaged var tripDescription: String
     
     // Following for dev purposes only
@@ -30,12 +30,12 @@ class Trip: NSManagedObject {
         self.trip = ""
         self.origin = ""
         self.destination = ""
-        self.departureDate = ""
-        self.arrivalDate = ""
-        self.totalDistance = ""
-        self.totalCost = ""
+        self.departureDate = NSDate()
+        self.arrivalDate = NSDate()
+        self.totalDistance = 0.00
+        self.totalCost = 0.00
         self.tripDescription = ""
-        self.zDev_totalCost = 0
+        self.zDev_totalCost = 0.00
         self.zDev_arrivalDate = NSDate()
     }
 }

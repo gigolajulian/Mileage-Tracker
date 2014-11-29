@@ -24,14 +24,24 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     var trip : String = ""
     var origin : String = ""
     var destination : String = ""
-    var departureDate : String = ""
-    var arrivalDate : String = ""
-    var totalDistance : String = ""
-    var totalCost : String = ""
+    var departureDate : NSDate = NSDate()
+    var arrivalDate : NSDate = NSDate()
+    var totalDistance : Float = 0.00
+    var totalCost : Float = 0.00
     var tripDescription : String = ""
 
     // Trip object to represent existing trip to update.
     var existingTripObject: Trip!
+    
+    /// A date formatter to format the `date` property of `datePicker`.
+    lazy var dateFormatter: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        //dateFormatter.dateStyle = .MediumStyle
+        //dateFormatter.timeStyle = .ShortStyle
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        return dateFormatter
+        }()
+    
     
     @IBAction func arrivalDatePicker(sender: UITextField) {
         // Create a date pick for arrival date field.
@@ -93,10 +103,10 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             textFieldTrip.text = trip
             textFieldOrigin.text = origin
             textFieldDestination.text = destination
-            textFieldDeparture.text = departureDate
-            textFieldArrival.text = arrivalDate
-            textFieldTotalDistance.text = totalDistance
-            textFieldTotalCost.text = totalCost
+            textFieldDeparture.text = departureDate.description
+            textFieldArrival.text = arrivalDate.description
+            textFieldTotalDistance.text = totalDistance.description
+            textFieldTotalCost.text = totalCost.description
             textFieldTripDescription.text = tripDescription
         }
     }
@@ -128,10 +138,10 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             existingTripObject.trip = textFieldTrip.text
             existingTripObject.origin = textFieldOrigin.text
             existingTripObject.destination = textFieldDestination.text
-            existingTripObject.departureDate = textFieldDeparture.text
-            existingTripObject.arrivalDate = textFieldArrival.text
-            existingTripObject.totalDistance = textFieldTotalDistance.text
-            existingTripObject.totalCost = textFieldTotalCost.text
+            existingTripObject.departureDate = dateFormatter.dateFromString(textFieldDeparture.text!)!
+            existingTripObject.arrivalDate = dateFormatter.dateFromString(textFieldArrival.text!)!
+            existingTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
+            existingTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
             existingTripObject.tripDescription = textFieldTripDescription.text
             
         } else {
@@ -143,10 +153,10 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             newTripObject.trip = textFieldTrip.text
             newTripObject.origin = self.textFieldOrigin.text
             newTripObject.destination = textFieldDestination.text
-            newTripObject.departureDate = textFieldDeparture.text
-            newTripObject.arrivalDate = textFieldArrival.text
-            newTripObject.totalDistance = textFieldTotalDistance.text
-            newTripObject.totalCost = textFieldTotalCost.text
+            newTripObject.departureDate = dateFormatter.dateFromString(textFieldDeparture.text)!
+            newTripObject.arrivalDate = dateFormatter.dateFromString(textFieldArrival.text)!
+            newTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
+            newTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
             newTripObject.tripDescription = textFieldTripDescription.text
             
             println(newTripObject)

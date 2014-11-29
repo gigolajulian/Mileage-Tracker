@@ -13,6 +13,15 @@ class TripListTableViewController: UITableViewController {
     let coreData: TripDataModel = TripDataModel()
     
     var tripList : Array<AnyObject> = []
+    
+    /// A date formatter to format the `date` property of `datePicker`.
+    lazy var dateFormatter: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        //dateFormatter.dateStyle = .MediumStyle
+        //dateFormatter.timeStyle = .ShortStyle
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        return dateFormatter
+        }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +82,8 @@ class TripListTableViewController: UITableViewController {
         if let indexPathUnwrapped = indexPath? {
             var tripObject : Trip = tripList[indexPathUnwrapped.row] as Trip
             cell.textLabel.text = tripObject.trip
-            cell.detailTextLabel?.text = tripObject.departureDate + " - " + tripObject.tripDescription
+            var departureString: NSString = dateFormatter.stringFromDate(tripObject.departureDate)
+            cell.detailTextLabel?.text = departureString + " - " + tripObject.tripDescription
         }
 
         return cell
