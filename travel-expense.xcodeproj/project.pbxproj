@@ -28,6 +28,7 @@
 		9CEDFEE61A251931003AC502 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDFEE51A251931003AC502 /* Accelerate.framework */; };
 		9CEDFEEA1A251B1C003AC502 /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */; };
 		B95FD9DF1A2742F400D12E65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95FD9DE1A2742F400D12E65 /* MapKit.framework */; };
+		B9D574C51A294BAF004EB304 /* Start Up.png in Resources */ = {isa = PBXBuildFile; fileRef = B9D574C41A294BAF004EB304 /* Start Up.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		9CEDFEE71A2519D8003AC502 /* travel_expense_bridge_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = travel_expense_bridge_header.h; sourceTree = "<group>"; };
 		9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 		B95FD9DE1A2742F400D12E65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B9D574C41A294BAF004EB304 /* Start Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Start Up.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				946A37B81A22D7DC005A5ADE /* Main.storyboard */,
 				946A379F1A22D669005A5ADE /* Images.xcassets */,
 				946A37A11A22D669005A5ADE /* LaunchScreen.xib */,
+				B9D574C41A294BAF004EB304 /* Start Up.png */,
 				946A37971A22D669005A5ADE /* travel_expense.xcdatamodeld */,
 				946A37931A22D669005A5ADE /* Supporting Files */,
 			);
@@ -304,6 +307,7 @@
 			files = (
 				946A37B91A22D7DC005A5ADE /* Main.storyboard in Resources */,
 				946A37A31A22D669005A5ADE /* LaunchScreen.xib in Resources */,
+				B9D574C51A294BAF004EB304 /* Start Up.png in Resources */,
 				946A37A01A22D669005A5ADE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
