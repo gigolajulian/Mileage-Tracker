@@ -2,7 +2,13 @@
 //  TripDataModel.swift
 //  travel-expense
 //
-//  Created by Saan Saeteurn on 11/24/14.
+//  Created by Mileage Tracker Team on 11/23/14.
+//  Authors:
+//          Abi Kasraie
+//          Julian Gigola
+//          Michael Layman
+//          Saan Saeteurn
+//
 //  Copyright (c) 2014 Saan Saeteurn. All rights reserved.
 //
 
@@ -10,6 +16,13 @@ import UIKit
 import CoreData
 
 class TripDataModel: NSObject {
+    
+    // A date formatter to format the `date` property of `datePicker`.
+    lazy var dateFormatter: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        return dateFormatter
+        }()
    
     func getManageObjectContext() -> NSManagedObjectContext {
         // Get an NSManagedObjectContext from our application delegate.

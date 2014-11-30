@@ -2,7 +2,13 @@
 //  TripViewController.swift
 //  travel-expense
 //
-//  Created by Saan Saeteurn on 11/23/14.
+//  Created by Mileage Tracker Team on 11/23/14.
+//  Authors:
+//          Abi Kasraie
+//          Julian Gigola
+//          Michael Layman
+//          Saan Saeteurn
+//
 //  Copyright (c) 2014 Saan Saeteurn. All rights reserved.
 //
 
@@ -33,16 +39,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     // Trip object to represent existing trip to update.
     var existingTripObject: Trip!
     
-    /// A date formatter to format the `date` property of `datePicker`.
-    lazy var dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
-        //dateFormatter.dateStyle = .MediumStyle
-        //dateFormatter.timeStyle = .ShortStyle
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        return dateFormatter
-        }()
-    
-    
     @IBAction func arrivalDatePicker(sender: UITextField) {
         // Create a date pick for arrival date field.
         
@@ -62,15 +58,11 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     }
 
     func arrivaDateChanged(sender: UIDatePicker) {
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        textFieldArrival.text = dateFormatter.stringFromDate(sender.date)
+        textFieldArrival.text = coreData.dateFormatter.stringFromDate(sender.date)
     }
 
     func departureDateChanged(sender: UIDatePicker) {
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        textFieldDeparture.text = dateFormatter.stringFromDate(sender.date)
+        textFieldDeparture.text = coreData.dateFormatter.stringFromDate(sender.date)
     }
     
 
@@ -103,8 +95,8 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             textFieldTrip.text = trip
             textFieldOrigin.text = origin
             textFieldDestination.text = destination
-            textFieldDeparture.text = departureDate.description
-            textFieldArrival.text = arrivalDate.description
+            textFieldDeparture.text = coreData.dateFormatter.stringFromDate(departureDate)
+            textFieldArrival.text = coreData.dateFormatter.stringFromDate(arrivalDate)
             textFieldTotalDistance.text = totalDistance.description
             textFieldTotalCost.text = totalCost.description
             textFieldTripDescription.text = tripDescription
@@ -138,8 +130,8 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             existingTripObject.trip = textFieldTrip.text
             existingTripObject.origin = textFieldOrigin.text
             existingTripObject.destination = textFieldDestination.text
-            existingTripObject.departureDate = dateFormatter.dateFromString(textFieldDeparture.text!)!
-            existingTripObject.arrivalDate = dateFormatter.dateFromString(textFieldArrival.text!)!
+            existingTripObject.departureDate = coreData.dateFormatter.dateFromString(textFieldDeparture.text!)!
+            existingTripObject.arrivalDate = coreData.dateFormatter.dateFromString(textFieldArrival.text!)!
             existingTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
             existingTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
             existingTripObject.tripDescription = textFieldTripDescription.text
@@ -153,8 +145,8 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             newTripObject.trip = textFieldTrip.text
             newTripObject.origin = self.textFieldOrigin.text
             newTripObject.destination = textFieldDestination.text
-            newTripObject.departureDate = dateFormatter.dateFromString(textFieldDeparture.text)!
-            newTripObject.arrivalDate = dateFormatter.dateFromString(textFieldArrival.text)!
+            newTripObject.departureDate = coreData.dateFormatter.dateFromString(textFieldDeparture.text)!
+            newTripObject.arrivalDate = coreData.dateFormatter.dateFromString(textFieldArrival.text)!
             newTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
             newTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
             newTripObject.tripDescription = textFieldTripDescription.text
