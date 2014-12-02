@@ -21,8 +21,7 @@ class Trip: NSManagedObject {
     @NSManaged var trip: String
     @NSManaged var origin: String
     @NSManaged var destination: String
-    @NSManaged var departureDate: NSDate
-    @NSManaged var arrivalDate: NSDate
+    @NSManaged var tripDate: NSDate
     @NSManaged var totalDistance: Float
     @NSManaged var totalCost: Float
     @NSManaged var tripDescription: String
@@ -36,8 +35,7 @@ class Trip: NSManagedObject {
         self.trip = ""
         self.origin = ""
         self.destination = ""
-        self.departureDate = NSDate()
-        self.arrivalDate = NSDate()
+        self.tripDate = NSDate()
         self.totalDistance = 0.00
         self.totalCost = 0.00
         self.tripDescription = ""

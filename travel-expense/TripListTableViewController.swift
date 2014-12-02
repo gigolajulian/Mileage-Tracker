@@ -42,8 +42,7 @@ class TripListTableViewController: UITableViewController {
             tripViewController.trip = selectedTripObject.trip
             tripViewController.origin = selectedTripObject.origin
             tripViewController.destination = selectedTripObject.destination
-            tripViewController.departureDate = selectedTripObject.departureDate
-            tripViewController.arrivalDate = selectedTripObject.arrivalDate
+            tripViewController.tripDate = selectedTripObject.tripDate
             tripViewController.totalDistance = selectedTripObject.totalDistance
             tripViewController.totalCost = selectedTripObject.totalCost
             tripViewController.tripDescription = selectedTripObject.tripDescription
@@ -77,8 +76,13 @@ class TripListTableViewController: UITableViewController {
 
         if let indexPathUnwrapped = indexPath? {
             var tripObject : Trip = tripList[indexPathUnwrapped.row] as Trip
+<<<<<<< Updated upstream
             cell.textLabel!.text = tripObject.trip
             var departureString: NSString = coreData.dateFormatter.stringFromDate(tripObject.departureDate)
+=======
+            cell.textLabel.text = tripObject.trip
+            var departureString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
+>>>>>>> Stashed changes
             cell.detailTextLabel?.text = departureString + " - " + tripObject.tripDescription
         }
 

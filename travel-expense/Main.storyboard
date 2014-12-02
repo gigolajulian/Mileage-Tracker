@@ -146,41 +146,39 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Destination" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJ5-lI-hED">
-                                <rect key="frame" x="16" y="169" width="337" height="30"/>
+                                <rect key="frame" x="16" y="169" width="249" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Arrival Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHS-l1-LYo">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHS-l1-LYo">
                                 <rect key="frame" x="16" y="207" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="arrivalDatePicker:" destination="cQi-lj-I6e" eventType="editingDidEnd" id="vm6-SD-X8K"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Departure Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KC2-tO-JFZ">
-                                <rect key="frame" x="16" y="245" width="337" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="departureDatePicker:" destination="cQi-lj-I6e" eventType="editingDidEnd" id="xGV-Xg-5Lf"/>
+                                    <action selector="tripDatePicker:" destination="cQi-lj-I6e" eventType="editingDidEnd" id="TfC-jb-fih"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Distance" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QOa-yU-Imz">
-                                <rect key="frame" x="16" y="283" width="337" height="30"/>
+                                <rect key="frame" x="16" y="255" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Cost" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xCp-HW-esV">
-                                <rect key="frame" x="16" y="321" width="337" height="30"/>
+                                <rect key="frame" x="16" y="301" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Description..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="68C-nv-cTy">
-                                <rect key="frame" x="16" y="359" width="337" height="30"/>
+                                <rect key="frame" x="16" y="346" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h7-7W-Tzf">
+                                <rect key="frame" x="279" y="168" width="74" height="30"/>
+                                <state key="normal" title="View Map">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -199,13 +197,13 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="textFieldArrival" destination="ZHS-l1-LYo" id="rLY-eH-JUN"/>
-                        <outlet property="textFieldDeparture" destination="KC2-tO-JFZ" id="qGA-Vm-vra"/>
+                        <outlet property="buttonViewMap" destination="2h7-7W-Tzf" id="FUY-IQ-uZK"/>
                         <outlet property="textFieldDestination" destination="pJ5-lI-hED" id="r7D-SY-HvP"/>
                         <outlet property="textFieldOrigin" destination="1UM-Cz-XyO" id="Puw-hw-eex"/>
                         <outlet property="textFieldTotalCost" destination="xCp-HW-esV" id="OYa-V7-2DC"/>
                         <outlet property="textFieldTotalDistance" destination="QOa-yU-Imz" id="5RT-YO-mVp"/>
                         <outlet property="textFieldTrip" destination="Kxb-7C-P2k" id="1qm-7k-Kpg"/>
+                        <outlet property="textFieldTripDate" destination="ZHS-l1-LYo" id="p39-Ju-y9G"/>
                         <outlet property="textFieldTripDescription" destination="68C-nv-cTy" id="y0S-Le-emc"/>
                     </connections>
                 </viewController>

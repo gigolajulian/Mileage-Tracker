@@ -18,20 +18,19 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     
     let coreData: TripDataModel = TripDataModel()
     
+    @IBOutlet var textFieldTripDate: UITextField!
     @IBOutlet var textFieldTrip: UITextField!
     @IBOutlet var textFieldOrigin: UITextField!
     @IBOutlet var textFieldDestination: UITextField!
-    @IBOutlet var textFieldDeparture: UITextField!
-    @IBOutlet var textFieldArrival: UITextField!
     @IBOutlet var textFieldTotalDistance: UITextField!
     @IBOutlet var textFieldTotalCost: UITextField!
     @IBOutlet var textFieldTripDescription: UITextField!
+    @IBOutlet var buttonViewMap: UIButton!
     
     var trip : String = ""
     var origin : String = ""
     var destination : String = ""
-    var departureDate : NSDate = NSDate()
-    var arrivalDate : NSDate = NSDate()
+    var tripDate : NSDate = NSDate()
     var totalDistance : Float = 0.00
     var totalCost : Float = 0.00
     var tripDescription : String = ""
@@ -39,32 +38,18 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     // Trip object to represent existing trip to update.
     var existingTripObject: Trip!
     
-    @IBAction func arrivalDatePicker(sender: UITextField) {
+    @IBAction func tripDatePicker(sender: UITextField) {
         // Create a date pick for arrival date field.
         
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
         sender.inputView = datePickerView
-        datePickerView.addTarget(self, action: Selector("arrivaDateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-    }
-    
-    @IBAction func departureDatePicker(sender: UITextField) {
-        // Create a date picker for departure date field.
-        
-        var datePickerView  : UIDatePicker = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePickerMode.Date
-        sender.inputView = datePickerView
-        datePickerView.addTarget(self, action: Selector("departureDateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: Selector("tripDateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
 
-    func arrivaDateChanged(sender: UIDatePicker) {
-        textFieldArrival.text = coreData.dateFormatter.stringFromDate(sender.date)
+    func tripDateChanged(sender: UIDatePicker) {
+        textFieldTripDate.text = coreData.dateFormatter.stringFromDate(sender.date)
     }
-
-    func departureDateChanged(sender: UIDatePicker) {
-        textFieldDeparture.text = coreData.dateFormatter.stringFromDate(sender.date)
-    }
-    
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         // Hide keyboard when clicking away from text field.
@@ -85,8 +70,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         textFieldTrip.delegate = self
         textFieldOrigin.delegate = self
         textFieldDestination.delegate = self
-        textFieldDeparture.delegate = self
-        textFieldArrival.delegate = self
+        textFieldTripDate.delegate = self
         textFieldTotalDistance.delegate = self
         textFieldTotalCost.delegate = self
         textFieldTripDescription.delegate = self
@@ -95,8 +79,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             textFieldTrip.text = trip
             textFieldOrigin.text = origin
             textFieldDestination.text = destination
-            textFieldDeparture.text = coreData.dateFormatter.stringFromDate(departureDate)
-            textFieldArrival.text = coreData.dateFormatter.stringFromDate(arrivalDate)
+            textFieldTripDate.text = coreData.dateFormatter.stringFromDate(tripDate)
             textFieldTotalDistance.text = totalDistance.description
             textFieldTotalCost.text = totalCost.description
             textFieldTripDescription.text = tripDescription
@@ -130,8 +113,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             existingTripObject.trip = textFieldTrip.text
             existingTripObject.origin = textFieldOrigin.text
             existingTripObject.destination = textFieldDestination.text
-            existingTripObject.departureDate = coreData.dateFormatter.dateFromString(textFieldDeparture.text!)!
-            existingTripObject.arrivalDate = coreData.dateFormatter.dateFromString(textFieldArrival.text!)!
+            existingTripObject.tripDate = coreData.dateFormatter.dateFromString(textFieldTripDate.text!)!
             existingTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
             existingTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
             existingTripObject.tripDescription = textFieldTripDescription.text
@@ -145,8 +127,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             newTripObject.trip = textFieldTrip.text
             newTripObject.origin = self.textFieldOrigin.text
             newTripObject.destination = textFieldDestination.text
-            newTripObject.departureDate = coreData.dateFormatter.dateFromString(textFieldDeparture.text)!
-            newTripObject.arrivalDate = coreData.dateFormatter.dateFromString(textFieldArrival.text)!
+            newTripObject.tripDate = coreData.dateFormatter.dateFromString(textFieldTripDate.text)!
             newTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
             newTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
             newTripObject.tripDescription = textFieldTripDescription.text
