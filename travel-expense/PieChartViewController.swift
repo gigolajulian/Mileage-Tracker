@@ -42,7 +42,7 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         let req = coreData_.getFetchRequest()
         
         // create query date for the year 2014
-        let caln:NSCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)!
+        let caln:NSCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
         let startcomp:NSDateComponents = NSDateComponents()
         startcomp.year = year
         startcomp.month = 1
@@ -62,8 +62,8 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         let endDate:NSDate! = caln.dateFromComponents(endcomp)
         
         // assign predicate
-        let startpredicate:NSPredicate = NSPredicate(format: "(zDev_arrivalDate >= %@)",startDate)!
-        let endpredicate:NSPredicate = NSPredicate(format: "(zDev_arrivalDate <= %@)",endDate)!
+        let startpredicate:NSPredicate = NSPredicate(format: "(arrivalDate >= %@)",startDate)
+        let endpredicate:NSPredicate = NSPredicate(format: "(arrivalDate <= %@)",endDate)
         req.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [startpredicate,endpredicate])
     
         // execute fetch request
@@ -75,7 +75,7 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
             // load numbers into data
             for (var i = 0, len = result.count; i < len; i++) {
                 var e:Trip = result[i]
-                dataForChart.append(e.zDev_totalCost)
+                dataForChart.append(e.totalCost)
             }
         } else {
             println(error)
@@ -87,18 +87,6 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        let taskGroup = dispatch_group_create()
-        let mainQueue = dispatch_get_main_queue()
-        /* Reload the table view on the main queue */
-        dispatch_group_async(taskGroup, mainQueue, {[weak self] in
-            //self!.fetchData()
-            println("get it...")
-            self!.fetchData()
-            self!.hostingView.setNeedsDisplay()
-
-        });
-        
         
         theme_ = (GraphTheme())
             .setBackground({
@@ -124,14 +112,7 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
                 (plotAreaFrame:CPTPlotAreaFrame) in
                 plotAreaFrame.fill = CPTFill(color:CPTColor.grayColor())})
         
-        //fetchData()
-        
-    }
-    
-    override func viewDidAppear(animated : Bool)
-    {
-        super.viewDidAppear(animated)
-        
+        // build the chart
         let newGraph = CPTXYGraph()
         newGraph.applyTheme(theme_)
         hostingView.hostedGraph = newGraph
@@ -154,7 +135,18 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         
         self.pieGraph = newGraph
         
+    }
+    
+    override func viewDidAppear(animated : Bool)
+    {
         println("view did appear")
+        
+        super.viewDidAppear(animated)
+        
+        // reload data
+        dataForChart.removeAll(keepCapacity: true)
+        fetchData()
+        piePlot.reloadData()
     }
     
     // MARK: - Plot Data Source Methods
