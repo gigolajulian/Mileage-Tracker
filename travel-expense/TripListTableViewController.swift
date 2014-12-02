@@ -76,14 +76,11 @@ class TripListTableViewController: UITableViewController {
 
         if let indexPathUnwrapped = indexPath? {
             var tripObject : Trip = tripList[indexPathUnwrapped.row] as Trip
-<<<<<<< Updated upstream
-            cell.textLabel!.text = tripObject.trip
-            var departureString: NSString = coreData.dateFormatter.stringFromDate(tripObject.departureDate)
-=======
             cell.textLabel.text = tripObject.trip
             var departureString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
->>>>>>> Stashed changes
-            cell.detailTextLabel?.text = departureString + " - " + tripObject.tripDescription
+            cell.textLabel.text = tripObject.trip
+            var tripDateString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
+            cell.detailTextLabel?.text = tripDateString + " - " + tripObject.tripDescription
         }
 
         return cell

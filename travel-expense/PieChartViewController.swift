@@ -42,7 +42,7 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         let req = coreData_.getFetchRequest()
         
         // create query date for the year 2014
-        let caln:NSCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        let caln:NSCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)!
         let startcomp:NSDateComponents = NSDateComponents()
         startcomp.year = year
         startcomp.month = 1
@@ -62,8 +62,8 @@ class PieChartViewController: UIViewController, CPTPieChartDataSource {
         let endDate:NSDate! = caln.dateFromComponents(endcomp)
         
         // assign predicate
-        let startpredicate:NSPredicate = NSPredicate(format: "(arrivalDate >= %@)",startDate)
-        let endpredicate:NSPredicate = NSPredicate(format: "(arrivalDate <= %@)",endDate)
+        let startpredicate:NSPredicate = NSPredicate(format: "(arrivalDate >= %@)",startDate)!
+        let endpredicate:NSPredicate = NSPredicate(format: "(arrivalDate <= %@)",endDate)!
         req.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [startpredicate,endpredicate])
     
         // execute fetch request
