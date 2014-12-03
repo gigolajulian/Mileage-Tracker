@@ -14,11 +14,12 @@
 
 import UIKit
 
-class TripListTableViewController: UITableViewController {
+class TripListTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
     let coreData: TripDataModel = TripDataModel()
-    var tripList : Array<AnyObject> = []
-
+    var tripList : Array<Trip> = []
+    var filteredTripList: Array<Trip> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,21 +29,71 @@ class TripListTableViewController: UITableViewController {
         
         let context = coreData.getManageObjectContext()
         let fetchRequest = coreData.getFetchRequest()
-        tripList = context.executeFetchRequest(fetchRequest, error: nil)!
+        
+        let results = context.executeFetchRequest(fetchRequest, error: nil)
+        
+        if let castedResults = results as? [Trip] {
+            println(self.searchDisplayController)
+            if (self.searchDisplayController!.active)
+            {
+               filteredTripList = castedResults
+            }
+            else
+            {
+               tripList = castedResults
+            }
+            
+        }
+    
         tableView.reloadData()
+    }
+    
+    // Filter the Array if Search Text exists in Trip Name
+    func filterContentForSearchText(searchText: String) {
+        self.filteredTripList = self.tripList.filter({(tripObject: Trip)  -> Bool in
+            let stringMatch = tripObject.trip.rangeOfString(searchText)
+            return stringMatch != nil   })
+    }
+
+    // These two methods are part of the UISearchDisplayControllerDelegate protocol:
+    // Method 1
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchText(searchString)
+        return true
+    }
+    
+    // Method 2
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if segue.identifier == "update" {
-            var selectedTripObject: Trip = tripList[self.tableView.indexPathForSelectedRow()!.row] as Trip
+            //var selectedTripObject: Trip = tripList[self.tableView.indexPathForSelectedRow()!.row] as Trip
+            //let tripViewController = segue.destinationViewController as TripViewController
+            
+            var selectedTripObject: Trip
+            
+            // Check if the segue is from a normal table view
+            // or a Search-filtered view
+            if (self.searchDisplayController!.active) {
+                let tableView = self.searchDisplayController!.searchResultsTableView
+                let indexPath = tableView.indexPathForSelectedRow()
+                selectedTripObject = filteredTripList[indexPath!.row] as Trip
+            
+            } else {
+                let indexPath = self.tableView.indexPathForSelectedRow()
+                selectedTripObject = tripList[indexPath!.row] as Trip
+            }
             
             let tripViewController = segue.destinationViewController as TripViewController
             
             tripViewController.trip = selectedTripObject.trip
             tripViewController.origin = selectedTripObject.origin
             tripViewController.destination = selectedTripObject.destination
-            tripViewController.tripDate = selectedTripObject.tripDate
+            //tripViewController.tripDate = selectedTripObject.tripDate
             tripViewController.totalDistance = selectedTripObject.totalDistance
             tripViewController.totalCost = selectedTripObject.totalCost
             tripViewController.tripDescription = selectedTripObject.tripDescription
@@ -65,24 +116,34 @@ class TripListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        return tripList.count
+        
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            return filteredTripList.count
+        } else {
+            return tripList.count
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell {
         // Configure the cell...
-        
+        var tripObject : Trip
         let cellIdentifier : NSString = "tripCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath!) as UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath!) as UITableViewCell
+      
+        let row = indexPath?.row
+        
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            tripObject = filteredTripList[row!]  }
+        else {  tripObject = tripList[row!]  }
 
-        if let indexPathUnwrapped = indexPath? {
-            var tripObject : Trip = tripList[indexPathUnwrapped.row] as Trip
-            cell.textLabel.text = tripObject.trip
-            var departureString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
-            cell.textLabel.text = tripObject.trip
-            var tripDateString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
-            cell.detailTextLabel?.text = tripDateString + " - " + tripObject.tripDescription
-        }
-
+        // Configure the cell
+        //if (cell == nil) {
+        //    cell = CustomTableCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)   }
+   
+        cell.textLabel!.text = tripObject.trip
+        var tripDateString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
+        cell.detailTextLabel?.text = tripDateString + " - " + tripObject.tripDescription
+        
         return cell
     }
 
