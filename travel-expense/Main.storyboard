@@ -100,16 +100,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R45-gf-ggc" customClass="CPTGraphHostingView">
-                                <rect key="frame" x="16" y="123" width="382" height="435"/>
+                                <rect key="frame" x="16" y="123" width="382" height="300"/>
                                 <color key="backgroundColor" red="0.89642168030000002" green="1" blue="0.94175124970000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4UU-Ia-jsA">
-                                <rect key="frame" x="16" y="577" width="97" height="30"/>
+                                <rect key="frame" x="16" y="444" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKS-UY-zUJ">
-                                <rect key="frame" x="149" y="576" width="97" height="30"/>
+                                <rect key="frame" x="130" y="444" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.35112989160000002" green="0.8763610838" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Change Year">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,16 +118,34 @@
                                     <action selector="changeYear:" destination="gtl-lQ-bs2" eventType="touchUpInside" id="ggb-DP-bTg"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wq3-h4-xmJ">
+                                <rect key="frame" x="11" y="496" width="392" height="142"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="IGq-qB-ykv">
+                                        <rect key="frame" x="0.0" y="0.0" width="392" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IGq-qB-ykv" id="Cs1-TL-rtc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4UU-Ia-jsA" firstAttribute="top" secondItem="R45-gf-ggc" secondAttribute="bottom" constant="19" id="4Ob-5B-rAf"/>
                             <constraint firstItem="R45-gf-ggc" firstAttribute="leading" secondItem="nYC-RT-nFl" secondAttribute="leadingMargin" id="5Pn-lQ-Agg"/>
                             <constraint firstItem="R45-gf-ggc" firstAttribute="trailing" secondItem="nYC-RT-nFl" secondAttribute="trailingMargin" id="9nh-Ul-H9Y"/>
+                            <constraint firstItem="CAk-cp-HCc" firstAttribute="top" secondItem="wq3-h4-xmJ" secondAttribute="bottom" constant="49" id="E85-LH-Wax"/>
+                            <constraint firstItem="wq3-h4-xmJ" firstAttribute="leading" secondItem="nYC-RT-nFl" secondAttribute="leadingMargin" constant="-5" id="KrC-Jz-UCh"/>
+                            <constraint firstItem="wq3-h4-xmJ" firstAttribute="leading" secondItem="4UU-Ia-jsA" secondAttribute="trailing" constant="-102" id="O1k-Zb-dtT"/>
+                            <constraint firstItem="wq3-h4-xmJ" firstAttribute="top" secondItem="4UU-Ia-jsA" secondAttribute="bottom" constant="22" id="f66-vj-aEM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OjR-My-1ma"/>
                     <connections>
+                        <outlet property="container" destination="wq3-h4-xmJ" id="Mod-OZ-DQw"/>
                         <outlet property="hostingView" destination="R45-gf-ggc" id="zCr-Ce-thK"/>
                         <outlet property="statusBar" destination="piv-81-yPU" id="UPy-Rh-7NZ"/>
                         <outlet property="testYear" destination="4UU-Ia-jsA" id="dLC-Iy-4Cg"/>
