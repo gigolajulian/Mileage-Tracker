@@ -52,13 +52,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		946A37901A22D668005A5ADE /* travel-expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "travel-expense.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		946A37901A22D668005A5ADE /* Mileage Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mileage Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		946A37941A22D669005A5ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		946A37951A22D669005A5ADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		946A37981A22D669005A5ADE /* travel_expense.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = travel_expense.xcdatamodel; sourceTree = "<group>"; };
 		946A379F1A22D669005A5ADE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		946A37A21A22D669005A5ADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		946A37A81A22D669005A5ADE /* travel-expenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "travel-expenseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		946A37A81A22D669005A5ADE /* Mileage TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mileage TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		946A37AD1A22D669005A5ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		946A37AE1A22D669005A5ADE /* travel_expenseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travel_expenseTests.swift; sourceTree = "<group>"; };
 		946A37B81A22D7DC005A5ADE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -123,8 +123,8 @@
 		946A37911A22D668005A5ADE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				946A37901A22D668005A5ADE /* travel-expense.app */,
-				946A37A81A22D669005A5ADE /* travel-expenseTests.xctest */,
+				946A37901A22D668005A5ADE /* Mileage Tracker.app */,
+				946A37A81A22D669005A5ADE /* Mileage TrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -229,9 +229,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		946A378F1A22D668005A5ADE /* travel-expense */ = {
+		946A378F1A22D668005A5ADE /* Mileage Tracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 946A37B21A22D669005A5ADE /* Build configuration list for PBXNativeTarget "travel-expense" */;
+			buildConfigurationList = 946A37B21A22D669005A5ADE /* Build configuration list for PBXNativeTarget "Mileage Tracker" */;
 			buildPhases = (
 				946A378C1A22D668005A5ADE /* Sources */,
 				946A378D1A22D668005A5ADE /* Frameworks */,
@@ -241,14 +241,14 @@
 			);
 			dependencies = (
 			);
-			name = "travel-expense";
+			name = "Mileage Tracker";
 			productName = "travel-expense";
-			productReference = 946A37901A22D668005A5ADE /* travel-expense.app */;
+			productReference = 946A37901A22D668005A5ADE /* Mileage Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		946A37A71A22D669005A5ADE /* travel-expenseTests */ = {
+		946A37A71A22D669005A5ADE /* Mileage TrackerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 946A37B51A22D669005A5ADE /* Build configuration list for PBXNativeTarget "travel-expenseTests" */;
+			buildConfigurationList = 946A37B51A22D669005A5ADE /* Build configuration list for PBXNativeTarget "Mileage TrackerTests" */;
 			buildPhases = (
 				946A37A41A22D669005A5ADE /* Sources */,
 				946A37A51A22D669005A5ADE /* Frameworks */,
@@ -259,9 +259,9 @@
 			dependencies = (
 				946A37AA1A22D669005A5ADE /* PBXTargetDependency */,
 			);
-			name = "travel-expenseTests";
+			name = "Mileage TrackerTests";
 			productName = "travel-expenseTests";
-			productReference = 946A37A81A22D669005A5ADE /* travel-expenseTests.xctest */;
+			productReference = 946A37A81A22D669005A5ADE /* Mileage TrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -283,7 +283,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 946A378B1A22D668005A5ADE /* Build configuration list for PBXProject "travel-expense" */;
+			buildConfigurationList = 946A378B1A22D668005A5ADE /* Build configuration list for PBXProject "Mileage Tracker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -302,8 +302,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				946A378F1A22D668005A5ADE /* travel-expense */,
-				946A37A71A22D669005A5ADE /* travel-expenseTests */,
+				946A378F1A22D668005A5ADE /* Mileage Tracker */,
+				946A37A71A22D669005A5ADE /* Mileage TrackerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -373,7 +373,7 @@
 /* Begin PBXTargetDependency section */
 		946A37AA1A22D669005A5ADE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 946A378F1A22D668005A5ADE /* travel-expense */;
+			target = 946A378F1A22D668005A5ADE /* Mileage Tracker */;
 			targetProxy = 946A37A91A22D669005A5ADE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -480,7 +480,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mileage Tracker";
 				SWIFT_OBJC_BRIDGING_HEADER = "travel-expense/travel_expense_bridge_header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/framework/**";
@@ -500,7 +500,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mileage Tracker";
 				SWIFT_OBJC_BRIDGING_HEADER = "travel-expense/travel_expense_bridge_header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/framework/**";
@@ -521,7 +521,7 @@
 				);
 				INFOPLIST_FILE = "travel-expenseTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mileage TrackerTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/travel-expense.app/travel-expense";
 			};
 			name = Debug;
@@ -536,7 +536,7 @@
 				);
 				INFOPLIST_FILE = "travel-expenseTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mileage TrackerTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/travel-expense.app/travel-expense";
 			};
 			name = Release;
@@ -544,7 +544,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		946A378B1A22D668005A5ADE /* Build configuration list for PBXProject "travel-expense" */ = {
+		946A378B1A22D668005A5ADE /* Build configuration list for PBXProject "Mileage Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				946A37B01A22D669005A5ADE /* Debug */,
@@ -553,7 +553,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		946A37B21A22D669005A5ADE /* Build configuration list for PBXNativeTarget "travel-expense" */ = {
+		946A37B21A22D669005A5ADE /* Build configuration list for PBXNativeTarget "Mileage Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				946A37B31A22D669005A5ADE /* Debug */,
@@ -562,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		946A37B51A22D669005A5ADE /* Build configuration list for PBXNativeTarget "travel-expenseTests" */ = {
+		946A37B51A22D669005A5ADE /* Build configuration list for PBXNativeTarget "Mileage TrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				946A37B61A22D669005A5ADE /* Debug */,
