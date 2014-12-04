@@ -30,7 +30,10 @@ UITableViewDelegate
     private let coreData_:TripDataModel = TripDataModel()
     private var pieGraph : CPTXYGraph? = nil
     private var piePlot:CPTPieChart!
-    private var chartData_:[Trip] = []
+    private let dataSource_:CoreDataSource = CoreDataSource()
+    // CRAP: No likey global static
+    private var idx:UInt = 100000
+    private var reportTypes:[NSString] = ["totalDistance","totalCost"]
     
     @IBOutlet var hostingView:CPTGraphHostingView!
     @IBOutlet var statusBar:UILabel!
@@ -38,56 +41,30 @@ UITableViewDelegate
     @IBOutlet var legend:UITableView!
     @IBOutlet var report:UISegmentedControl!
     
-    private var reportTypes:[NSString] = ["distance","cost"]
-    
     @IBAction func reportChange(sender: UISegmentedControl) {
         println(sender.selectedSegmentIndex)
-        // send change report event
-        chartData_.removeAll(keepCapacity: true)
-        legend.reloadData()
-        chartData_.extend(fetchData_())
-        
-        println("change report reload table: \(self.chartData_.count)")
-        
+        refreshDataSource_(-1)
         piePlot.reloadData()
         legend.reloadData()
     }
     
     func changeYear(sender: UIButton) {
-        // TODO: Clean up refresh
-        chartData_.removeAll(keepCapacity: true)
-        chartData_.extend(
-            fetchData_(year: (self.testYear.text as NSString).integerValue))
-        
-        println("change date reload table: \(self.chartData_.count)")
-        
+        refreshDataSource_(
+            (self.testYear.text as NSString).integerValue)
         piePlot.reloadData()
         legend.reloadData()
     }
-
-    private func fetchData_(year:Int = 2014) -> [Trip]
-    {
-        
-        let req = coreData_.getFetchRequest()
-        
-        req.predicate = ChartPredicates.yearly(year: year)
-        
-        // execute fetch request
-        var error:NSError?
-        let ctx = coreData_.getManageObjectContext()
-        var data = ctx.executeFetchRequest(req, error: &error) as [Trip]
-        
-        if (error == nil) {
-            return data
-        } else {
-            println(error)
-        }
-        return []
-    }
-    
+ 
     private func refreshDataSource_(date:Int) {
-        chartData_.removeAll(keepCapacity: true)
-        chartData_.extend(fetchData_(year: date))
+        
+        if (date < 0) {
+            dataSource_.reload()
+            return
+        }
+        
+        dataSource_
+            .setPredicate(ChartPredicates.yearly(year: date))
+            .reload()
     }
     
     // MARK: Initialization
@@ -139,38 +116,26 @@ UITableViewDelegate
     // MARK: - Plot Data Source Methods
     
     func legendTitleForPieChart(pieChart:CPTPieChart, recordIndex:UInt) -> NSString {
-        return chartData_[Int(recordIndex)].trip
+        return dataSource_.get("trip", index: Int(recordIndex)) as NSString
     }
     
     func numberOfRecordsForPlot(plot: CPTPlot!) -> UInt {
-        return UInt(chartData_.count)
+        return UInt(dataSource_.count())
     }
     
     func numberForPlot(plot: CPTPlot!, field: UInt, recordIndex: UInt) -> AnyObject! {
-        if Int(recordIndex) > chartData_.count {
+        if Int(recordIndex) > dataSource_.count() {
             return nil
         }
         else {
             switch (field) {
             case 0:
-                // TODO SWITCH HERE
-                return selectedDataField_(
+                return dataSource_.get(
                     reportTypes[report.selectedSegmentIndex],
-                    index: Int(recordIndex))
+                    index: Int(recordIndex)) as NSNumber
             default:
                 return recordIndex as NSNumber
             }
-        }
-    }
-    
-    private func selectedDataField_(field:NSString, index:Int) -> AnyObject! {
-        switch(field) {
-            case "cost":
-                return chartData_[index].totalCost as NSNumber
-            case "distance":
-                return chartData_[index].totalDistance as NSNumber
-            default:
-                return 0 as NSNumber
         }
     }
     
@@ -186,8 +151,6 @@ UITableViewDelegate
         return nil
     }
     
-    // CRAP: No likey global static
-    var idx:UInt = 100000
     
     func radialOffsetForPieChart(piePlot: CPTPieChart!, recordIndex: UInt) -> CGFloat
     {
@@ -210,9 +173,11 @@ UITableViewDelegate
     {
         println("select slice")
         
-        //debug: self.pieGraph?.title = "Selected index: \(recordIndex)"
+        var value = dataSource_.get(
+            reportTypes[report.selectedSegmentIndex],
+            index: Int(recordIndex))
+        statusBar.text = "DEV Value: \(value) | Selected index: \(recordIndex)"
         
-        statusBar.text = "DEV Value: \(selectedDataField_(reportTypes[report.selectedSegmentIndex], index:Int(recordIndex))) | Selected index: \(recordIndex)"
         // CRAP: No likey global static
         idx = recordIndex
         // force a redraw
@@ -223,7 +188,8 @@ UITableViewDelegate
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println(chartData_.count)
+        //println(chartData_.count)
+        println(dataSource_.count())
         println("select")
         // CRAP: No likey global static
         idx = UInt(indexPath.row)
@@ -245,8 +211,8 @@ UITableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        println("refresh: \(chartData_.count)")
-        return chartData_.count
+        println("refresh: \(dataSource_.count())")
+        return dataSource_.count()
     }
 
     
@@ -257,17 +223,15 @@ UITableViewDelegate
                 "reuseIdentifier",
                 forIndexPath: indexPath) as LegendTableViewCell
         
-        let tripObj:Trip = chartData_[indexPath.row]
-        cell.title.text = tripObj.trip
-        cell.subTitle.text = coreData_.dateFormatter
-            .stringFromDate(tripObj.tripDate)
-        
-        let color:UIColor = CPTPieChart.defaultPieSliceColorForIndex(UInt(indexPath.row)).uiColor
-
+        let color:UIColor = CPTPieChart
+            .defaultPieSliceColorForIndex(UInt(indexPath.row)).uiColor
         cell.leftBorder.backgroundColor = color
-    
-        println("###")
-        println(chartData_.count)
+        cell.title.text = dataSource_.get(
+            "trip",
+            index: indexPath.row) as NSString
+        cell.subTitle.text = coreData_.dateFormatter
+            .stringFromDate(
+                dataSource_.get("tripDate", index: indexPath.row) as NSDate)
         
         return cell
     }
