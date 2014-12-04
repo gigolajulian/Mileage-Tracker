@@ -19,16 +19,17 @@ struct GraphThemes {
         return (GraphTheme())
             .setBackground({
                 (graph:CPTGraph) in
-                graph.fill = CPTFill(color:CPTColor.redColor())
+                //graph.fill = CPTFill(color:CPTColor.redColor())
                 // Paddings
                 graph.paddingLeft   = 5.0
                 graph.paddingRight  = 5.0
                 graph.paddingTop    = 5.0
                 graph.paddingBottom = 5.0
                 // font styles
-                var whiteText:CPTMutableTextStyle = CPTMutableTextStyle()
-                whiteText.color = CPTColor.whiteColor()
-                graph.titleTextStyle = whiteText })
+                //var whiteText:CPTMutableTextStyle = CPTMutableTextStyle()
+                //whiteText.color = CPTColor.whiteColor()
+                //graph.titleTextStyle = whiteText 
+            })
             .setAxisSet({
                 (axisSet:CPTAxisSet) in
                 let xyAxisSet:CPTXYAxisSet = axisSet as CPTXYAxisSet
@@ -38,6 +39,7 @@ struct GraphThemes {
                 xyAxisSet.yAxis.axisLineStyle = nil })
             .setPlotArea({
                 (plotAreaFrame:CPTPlotAreaFrame) in
-                plotAreaFrame.fill = CPTFill(color:CPTColor.cyanColor())})
+                //plotAreaFrame.fill = CPTFill(color:CPTColor.cyanColor())
+            })
     }()
 }

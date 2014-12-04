@@ -61,9 +61,6 @@ struct ChartPredicates {
         return caln.dateByAddingComponents(comp, toDate: toDate, options: NSCalendarOptions.allZeros)!
     }
     
-    
-    
-    
     static private func buildDateRangePredicate_(
         start:NSDate, end:NSDate) -> NSPredicate
     {

@@ -13,12 +13,17 @@ todo:
 -stylings and chart labeling
 -monthly yearly aggregates
 -2nd bar chart
-
+-input date intervals
+-show data for picked data
+-BUG: date change does not update legend table
 */
 
 import UIKit
 
-class PieChartViewController: UIViewController, CPTPieChartDataSource, UITableViewDataSource,
+class PieChartViewController:
+UIViewController,
+CPTPieChartDataSource,
+UITableViewDataSource,
 UITableViewDelegate
 {
     
@@ -30,21 +35,41 @@ UITableViewDelegate
     @IBOutlet var hostingView:CPTGraphHostingView!
     @IBOutlet var statusBar:UILabel!
     @IBOutlet var testYear:UITextField!
-    @IBOutlet var container:UITableView!
+    @IBOutlet var legend:UITableView!
+    @IBOutlet var report:UISegmentedControl!
     
+    private var reportTypes:[NSString] = ["distance","cost"]
+    
+    @IBAction func reportChange(sender: UISegmentedControl) {
+        println(sender.selectedSegmentIndex)
+        // send change report event
+        chartData_.removeAll(keepCapacity: true)
+        legend.reloadData()
+        chartData_.extend(fetchData_())
+        
+        println("change report reload table: \(self.chartData_.count)")
+        
+        piePlot.reloadData()
+        legend.reloadData()
+    }
     
     func changeYear(sender: UIButton) {
         // TODO: Clean up refresh
         chartData_.removeAll(keepCapacity: true)
         chartData_.extend(
             fetchData_(year: (self.testYear.text as NSString).integerValue))
+        
+        println("change date reload table: \(self.chartData_.count)")
+        
         piePlot.reloadData()
+        legend.reloadData()
     }
-    
+
     private func fetchData_(year:Int = 2014) -> [Trip]
     {
         
         let req = coreData_.getFetchRequest()
+        
         req.predicate = ChartPredicates.yearly(year: year)
         
         // execute fetch request
@@ -60,9 +85,9 @@ UITableViewDelegate
         return []
     }
     
-    private func refreshDataSource_() {
+    private func refreshDataSource_(date:Int) {
         chartData_.removeAll(keepCapacity: true)
-        chartData_.extend(fetchData_())
+        chartData_.extend(fetchData_(year: date))
     }
     
     // MARK: Initialization
@@ -72,51 +97,43 @@ UITableViewDelegate
         super.viewDidLoad()
         
         // link the legend to the datasource
-        container.dataSource = self
-        container.delegate = self
+        legend.dataSource = self
+        legend.delegate = self
         
         // build the chart
         let newGraph = CPTXYGraph()
         newGraph.applyTheme(GraphThemes.PieChart)
         hostingView.hostedGraph = newGraph
         
-        newGraph.title          = "Graph Title"
-        
         // pie chart settings
         piePlot = CPTPieChart()
         piePlot.dataSource      = self
         piePlot.delegate        = self
-        piePlot.pieRadius       = 131.0
+        piePlot.pieRadius       = 125.0
         piePlot.identifier      = "Pie Chart 1"
         piePlot.startAngle      = CGFloat(M_PI_4)
         piePlot.sliceDirection  = .CounterClockwise
-        piePlot.centerAnchor    = CGPoint(x: 0.5, y: 0.38)
+        piePlot.centerAnchor    = CGPoint(x: 0.5, y: 0.5)
         piePlot.borderLineStyle = GraphThemes.PieChartLineStyle
         
         // add pie chart
         newGraph.addPlot(piePlot)
         
         self.pieGraph = newGraph
-        
-        // add legend
-        //let legend:CPTLegend = CPTLegend(graph:newGraph)
-        //legend.numberOfColumns = 1
-        //legend.borderLineStyle = GraphThemes.PieChartLineStyle
-        //legend.cornerRadius = 5.0
-        //newGraph.legend = legend
-        
-        //println((container.subviews[0] as UITableView).c)
     }
     
     override func viewDidAppear(animated : Bool)
     {
         println("view did appear")
-        
         super.viewDidAppear(animated)
         
-        // reload data
-        refreshDataSource_()
+        let date:Int = ((self.testYear.text as NSString).integerValue == 0) ?
+            2014 :
+            (self.testYear.text as NSString).integerValue
+        
+        refreshDataSource_(date)
         piePlot.reloadData()
+        legend.reloadData()
     }
     
     // MARK: - Plot Data Source Methods
@@ -136,10 +153,24 @@ UITableViewDelegate
         else {
             switch (field) {
             case 0:
-                return chartData_[Int(recordIndex)].totalCost as NSNumber
+                // TODO SWITCH HERE
+                return selectedDataField_(
+                    reportTypes[report.selectedSegmentIndex],
+                    index: Int(recordIndex))
             default:
                 return recordIndex as NSNumber
             }
+        }
+    }
+    
+    private func selectedDataField_(field:NSString, index:Int) -> AnyObject! {
+        switch(field) {
+            case "cost":
+                return chartData_[index].totalCost as NSNumber
+            case "distance":
+                return chartData_[index].totalDistance as NSNumber
+            default:
+                return 0 as NSNumber
         }
     }
     
@@ -166,6 +197,8 @@ UITableViewDelegate
         if ( recordIndex == idx ) {
             // pulls out a slice
             offset = piePlot.pieRadius / 4.0
+        } else {
+            offset = 2 //piePlot.pieRadius / 10.0
         }
         //println(offset)
         return offset
@@ -176,8 +209,10 @@ UITableViewDelegate
     func pieChart(plot: CPTPlot!, sliceWasSelectedAtRecordIndex recordIndex: UInt)
     {
         println("select slice")
-        self.pieGraph?.title = "Selected index: \(recordIndex)"
-        statusBar.text = "Value: \(chartData_[Int(recordIndex)].totalCost) | Selected index: \(recordIndex)"
+        
+        //debug: self.pieGraph?.title = "Selected index: \(recordIndex)"
+        
+        statusBar.text = "DEV Value: \(selectedDataField_(reportTypes[report.selectedSegmentIndex], index:Int(recordIndex))) | Selected index: \(recordIndex)"
         // CRAP: No likey global static
         idx = recordIndex
         // force a redraw
@@ -206,19 +241,31 @@ UITableViewDelegate
         return 1
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        refreshDataSource_()
-        println("refresh")
+        println("refresh: \(chartData_.count)")
         return chartData_.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-        // Configure the cell...
-        cell.textLabel?.text = chartData_[indexPath.row].trip
+        
+        let cell:LegendTableViewCell = tableView
+            .dequeueReusableCellWithIdentifier(
+                "reuseIdentifier",
+                forIndexPath: indexPath) as LegendTableViewCell
+        
+        let tripObj:Trip = chartData_[indexPath.row]
+        cell.title.text = tripObj.trip
+        cell.subTitle.text = coreData_.dateFormatter
+            .stringFromDate(tripObj.tripDate)
+        
+        let color:UIColor = CPTPieChart.defaultPieSliceColorForIndex(UInt(indexPath.row)).uiColor
+
+        cell.leftBorder.backgroundColor = color
+    
         println("###")
         println(chartData_.count)
         
