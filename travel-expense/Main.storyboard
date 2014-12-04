@@ -8,7 +8,7 @@
         <!--Mileage Tracker-->
         <scene sceneID="urX-ih-P6n">
             <objects>
-                <tableViewController id="qWk-3q-yVP" customClass="TripListTableViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="qWk-3q-yVP" customClass="TripListTableViewController" customModule="Mileage_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jiv-PT-DOO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
         <!--Report-->
         <scene sceneID="HCN-TR-BoK">
             <objects>
-                <viewController id="gtl-lQ-bs2" customClass="PieChartViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gtl-lQ-bs2" customClass="PieChartViewController" customModule="Mileage_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yYZ-kp-diq"/>
                         <viewControllerLayoutGuide type="bottom" id="CAk-cp-HCc"/>
@@ -138,7 +138,7 @@
                                 <rect key="frame" x="0.0" y="496" width="414" height="196"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="IGq-qB-ykv" customClass="LegendTableViewCell" customModule="travel_expense" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="IGq-qB-ykv" customClass="LegendTableViewCell" customModule="Mileage_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="392" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IGq-qB-ykv" id="Cs1-TL-rtc">
@@ -207,7 +207,7 @@
         <!--Enter Trip Details-->
         <scene sceneID="9kE-bA-5nL">
             <objects>
-                <viewController title="Enter Trip Details" id="cQi-lj-I6e" customClass="TripViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Enter Trip Details" id="cQi-lj-I6e" customClass="TripViewController" customModule="Mileage_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="maR-6S-ZkE"/>
                         <viewControllerLayoutGuide type="bottom" id="nOJ-hr-JCv"/>
@@ -341,7 +341,7 @@
         <!--DEV_DataEntry-->
         <scene sceneID="4jK-0I-csh">
             <objects>
-                <viewController id="hUs-MQ-6Dp" customClass="DEV_DataEntryViewController" customModule="travel_expense" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hUs-MQ-6Dp" customClass="DEV_DataEntryViewController" customModule="Mileage_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="406-KS-Pwd"/>
                         <viewControllerLayoutGuide type="bottom" id="yxM-qU-5kX"/>

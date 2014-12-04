@@ -13,8 +13,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TripViewController: UIViewController, UITextFieldDelegate {
+    
+    var saveSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("S", ofType: "m4a")!)
+    var audioPlayer = AVAudioPlayer()
     
     let coreData: TripDataModel = TripDataModel()
     
@@ -50,6 +54,8 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     func tripDateChanged(sender: UIDatePicker) {
         textFieldTripDate.text = coreData.dateFormatter.stringFromDate(sender.date)
     }
+    
+    
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         // Hide keyboard when clicking away from text field.
@@ -65,7 +71,10 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        audioPlayer = AVAudioPlayer(contentsOfURL: saveSound, error: nil)
+        audioPlayer.prepareToPlay()
+      
         // Set text fields to clear keyboard on 'return' key.
         textFieldTrip.delegate = self
         textFieldOrigin.delegate = self
@@ -102,6 +111,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         3. Save our Trip object back into our data model.
         4. Navigate back to our main view controller.
         */
+        audioPlayer.play() 
         
         println("Save Button Pressed \(textFieldTrip.text).")
         
