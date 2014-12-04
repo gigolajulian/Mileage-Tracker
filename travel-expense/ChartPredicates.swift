@@ -62,14 +62,18 @@ struct ChartPredicates {
     }
     
     
+    
+    
     static private func buildDateRangePredicate_(
         start:NSDate, end:NSDate) -> NSPredicate
     {
+        let subPredicates:[NSPredicate!]! = [
+            NSPredicate(format: "(tripDate >= %@)",start),
+            NSPredicate(format: "(tripDate < %@)",end)]
+        
         return NSCompoundPredicate(
             type: NSCompoundPredicateType.AndPredicateType,
-            subpredicates: [
-                NSPredicate(format: "(tripDate >= %@)",start),
-                NSPredicate(format: "(tripDate < %@)",end)])
+            subpredicates: subPredicates)
     }
     
     static func monthly(month:Int, year:Int) -> NSPredicate {
@@ -93,6 +97,12 @@ struct ChartPredicates {
             day: 0, month: 0, year: 1,
             toDate: start)
         
+        return buildDateRangePredicate_(start, end: end)
+    }
+    
+    static func customDateRange(
+        start:NSDate, end:NSDate) -> NSPredicate
+    {
         return buildDateRangePredicate_(start, end: end)
     }
 }
