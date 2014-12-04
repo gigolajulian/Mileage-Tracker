@@ -118,8 +118,24 @@
                                     <action selector="changeYear:" destination="gtl-lQ-bs2" eventType="touchUpInside" id="ggb-DP-bTg"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Swt-9X-7XD">
+                                <rect key="frame" x="0.0" y="64" width="414" height="71"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-gT-XgE">
+                                        <rect key="frame" x="82" y="16" width="251" height="29"/>
+                                        <segments>
+                                            <segment title="Distance"/>
+                                            <segment title="Cost"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="reportChange:" destination="gtl-lQ-bs2" eventType="valueChanged" id="sVe-Vi-sEm"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wq3-h4-xmJ">
-                                <rect key="frame" x="11" y="496" width="350" height="160"/>
+                                <rect key="frame" x="0.0" y="496" width="414" height="196"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="IGq-qB-ykv" customClass="LegendTableViewCell" customModule="travel_expense" customModuleProvider="target">
@@ -157,24 +173,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Swt-9X-7XD">
-                                <rect key="frame" x="0.0" y="64" width="414" height="71"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-gT-XgE">
-                                        <rect key="frame" x="82" y="16" width="251" height="29"/>
-                                        <segments>
-                                            <segment title="Distance"/>
-                                            <segment title="Cost"/>
-                                            <segment title=""/>
-                                            <segment title=""/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="reportChange:" destination="gtl-lQ-bs2" eventType="valueChanged" id="sVe-Vi-sEm"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -218,29 +216,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Trip Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msd-5r-CdO">
-                                <rect key="frame" x="79" y="64" width="256" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kxb-7C-P2k">
-                                <rect key="frame" x="16" y="93" width="337" height="30"/>
+                                <rect key="frame" x="39" y="110" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Origin" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1UM-Cz-XyO">
-                                <rect key="frame" x="16" y="131" width="337" height="30"/>
+                                <rect key="frame" x="39" y="148" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Destination" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJ5-lI-hED">
-                                <rect key="frame" x="16" y="169" width="249" height="30"/>
+                                <rect key="frame" x="39" y="186" width="249" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHS-l1-LYo">
-                                <rect key="frame" x="16" y="207" width="337" height="30"/>
+                                <rect key="frame" x="39" y="224" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -248,22 +240,22 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Distance" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QOa-yU-Imz">
-                                <rect key="frame" x="16" y="255" width="337" height="30"/>
+                                <rect key="frame" x="39" y="272" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Cost" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xCp-HW-esV">
-                                <rect key="frame" x="16" y="301" width="337" height="30"/>
+                                <rect key="frame" x="39" y="318" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Description..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="68C-nv-cTy">
-                                <rect key="frame" x="16" y="346" width="337" height="30"/>
+                                <rect key="frame" x="39" y="363" width="337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h7-7W-Tzf">
-                                <rect key="frame" x="279" y="168" width="74" height="30"/>
+                                <rect key="frame" x="302" y="185" width="74" height="30"/>
                                 <state key="normal" title="View Map">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -300,30 +292,16 @@
             </objects>
             <point key="canvasLocation" x="297" y="81"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="IZT-ZE-r0Y">
-            <objects>
-                <viewController id="aXg-H4-YgS" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Aba-ML-3CH"/>
-                        <viewControllerLayoutGuide type="bottom" id="wUV-T2-xHf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="juL-r7-Azc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="vc0-3N-xCa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="izj-wl-q9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1277" y="-826"/>
-        </scene>
         <!--Trips-->
         <scene sceneID="Q3k-jk-Vay">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qJ1-hF-Ntv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trips" id="3h0-Sk-Uzb"/>
+                    <tabBarItem key="tabBarItem" title="Trips" image="Trips Unselected 30x30" selectedImage="Trips Selected 30x30" id="3h0-Sk-Uzb">
+                        <inset key="imageInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="Trips Selected 30x30"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6yO-h4-tY2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -353,9 +331,7 @@
                     <connections>
                         <segue destination="qJ1-hF-Ntv" kind="relationship" relationship="viewControllers" id="jOt-0S-Q1v"/>
                         <segue destination="nj6-9D-6Fl" kind="relationship" relationship="viewControllers" id="rMK-Yp-u9l"/>
-                        <segue destination="okh-O4-Gti" kind="relationship" relationship="viewControllers" id="ECJ-x7-DS0"/>
                         <segue destination="fWf-9m-1u9" kind="relationship" relationship="viewControllers" id="TQO-oz-w16"/>
-                        <segue destination="hUs-MQ-6Dp" kind="relationship" relationship="viewControllers" id="85o-b0-XCS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdt-cr-pjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -371,11 +347,11 @@
                         <viewControllerLayoutGuide type="bottom" id="yxM-qU-5kX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sGq-B9-o3b">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="For dev only" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1x-EX-78K">
-                                <rect key="frame" x="186" y="41" width="95" height="21"/>
+                                <rect key="frame" x="279" y="41" width="95" height="21"/>
                                 <color key="backgroundColor" red="1" green="0.23470107139999999" blue="0.11944129570000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -432,7 +408,12 @@
         <scene sceneID="3V8-g8-q7D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nj6-9D-6Fl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reports" id="0CX-pR-pQ8"/>
+                    <tabBarItem key="tabBarItem" title="Reports" image="Reports Unselected 30x30" selectedImage="Reports Selected 30x30" id="0CX-pR-pQ8">
+                        <inset key="imageInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="Reports Selected 30x30"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AWZ-ec-il5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -447,7 +428,7 @@
             </objects>
             <point key="canvasLocation" x="787" y="-1748"/>
         </scene>
-        <!--About Mileage Tracker-->
+        <!--About-->
         <scene sceneID="bQs-ap-AUf">
             <objects>
                 <viewController id="nyO-gK-cad" sceneMemberID="viewController">
@@ -456,14 +437,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Ay4-Rn-k9u"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rhZ-AY-QcJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="About" translatesAutoresizingMaskIntoConstraints="NO" id="EcK-Ya-y41">
-                                <rect key="frame" x="0.0" y="-234" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="-279" width="414" height="736"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrd-3U-PCH">
-                                <rect key="frame" x="67" y="455" width="240" height="104"/>
+                                <rect key="frame" x="87" y="403" width="240" height="104"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Abi Kasraie
 Julian Gigola
@@ -473,16 +454,16 @@ Saan Saeteurn</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iOS Programming - December 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjO-Hv-FmF">
-                                <rect key="frame" x="27" y="585" width="320" height="33"/>
+                                <rect key="frame" x="47" y="528" width="320" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DeAnza_Logo_centered" translatesAutoresizingMaskIntoConstraints="NO" id="X83-Dd-XTY">
-                                <rect key="frame" x="92" y="572" width="190" height="22"/>
+                                <rect key="frame" x="112" y="515" width="190" height="22"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Baz-WX-qfv">
-                                <rect key="frame" x="16" y="273" width="339" height="174"/>
+                                <rect key="frame" x="38" y="221" width="339" height="174"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">This app enables the user to log trip details to gather expense reports, compensation for travel, expense account at work, or tax deduction purposes. Main objective has been practicing all the concepts learned in class with emphasis on Core Data and Managed Object Models. Collaboration was met in GitHub. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -491,37 +472,23 @@ Saan Saeteurn</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="About Mileage Tracker" id="bZg-8M-cnK"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationItem key="navigationItem" title="About" id="bZg-8M-cnK"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Iw-GQ-TgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1776.5" y="-821.5"/>
         </scene>
-        <!--View Map-->
-        <scene sceneID="z89-Yb-Z42">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="okh-O4-Gti" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="View Map" id="hYm-c9-adh"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ywc-oL-HCN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="aXg-H4-YgS" kind="relationship" relationship="rootViewController" id="ZPD-Uv-qZ2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="phP-47-e5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1277" y="-1748"/>
-        </scene>
         <!--About-->
         <scene sceneID="Hyu-OZ-fmb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fWf-9m-1u9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" id="R15-lU-IUT"/>
+                    <tabBarItem key="tabBarItem" title="About" image="About Unselected 30x30" selectedImage="About Selected 30x30" id="R15-lU-IUT">
+                        <inset key="imageInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="About Selected 30x30"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JFl-oc-wmf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -539,7 +506,13 @@ Saan Saeteurn</string>
     </scenes>
     <resources>
         <image name="About" width="600" height="380"/>
+        <image name="About Selected 30x30" width="52" height="52"/>
+        <image name="About Unselected 30x30" width="52" height="52"/>
         <image name="DeAnza_Logo_centered" width="360" height="81"/>
+        <image name="Reports Selected 30x30" width="46" height="52"/>
+        <image name="Reports Unselected 30x30" width="46" height="52"/>
+        <image name="Trips Selected 30x30" width="60" height="50"/>
+        <image name="Trips Unselected 30x30" width="60" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jRv-oe-PRV"/>
