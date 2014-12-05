@@ -18,12 +18,10 @@
 		946A37C11A231495005A5ADE /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C01A231495005A5ADE /* Trip.swift */; };
 		946A37C31A234132005A5ADE /* TripDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C21A234132005A5ADE /* TripDataModel.swift */; };
 		946A37C51A234B82005A5ADE /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C41A234B82005A5ADE /* ReportViewController.swift */; };
-		9C253A321A2FB67800428959 /* LegendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C253A311A2FB67800428959 /* LegendTableView.swift */; };
 		9C4AF6611A267EB3002E697E /* DEV_DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */; };
 		9C6B83591A2E35D700D602E3 /* ChartPredicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B83581A2E35D700D602E3 /* ChartPredicates.swift */; };
 		9C6B835E1A2E603800D602E3 /* GraphThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B835D1A2E603800D602E3 /* GraphThemes.swift */; };
 		9CC800591A311153008EC10B /* LegendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC800581A311153008EC10B /* LegendTableViewController.swift */; };
-		9CC8005E1A3114AC008EC10B /* LegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC8005D1A3114AC008EC10B /* LegendView.swift */; };
 		9CD9C9C01A30ECBE0002A2EA /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9C9BF1A30ECBE0002A2EA /* CoreDataSource.swift */; };
 		9CE628881A2FC86E00487623 /* LegendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE628871A2FC86E00487623 /* LegendTableViewCell.swift */; };
 		9CE7DCA41A2562AC00968DB8 /* GraphTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7DCA31A2562AC00968DB8 /* GraphTheme.swift */; };
@@ -71,12 +69,10 @@
 		946A37C01A231495005A5ADE /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		946A37C21A234132005A5ADE /* TripDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDataModel.swift; sourceTree = "<group>"; };
 		946A37C41A234B82005A5ADE /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
-		9C253A311A2FB67800428959 /* LegendTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendTableView.swift; sourceTree = "<group>"; };
 		9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DEV_DataEntryViewController.swift; sourceTree = "<group>"; };
 		9C6B83581A2E35D700D602E3 /* ChartPredicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPredicates.swift; sourceTree = "<group>"; };
 		9C6B835D1A2E603800D602E3 /* GraphThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphThemes.swift; sourceTree = "<group>"; };
 		9CC800581A311153008EC10B /* LegendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendTableViewController.swift; sourceTree = "<group>"; };
-		9CC8005D1A3114AC008EC10B /* LegendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendView.swift; sourceTree = "<group>"; };
 		9CD9C9BF1A30ECBE0002A2EA /* CoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
 		9CE628871A2FC86E00487623 /* LegendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendTableViewCell.swift; sourceTree = "<group>"; };
 		9CE7DCA31A2562AC00968DB8 /* GraphTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphTheme.swift; sourceTree = "<group>"; };
@@ -141,7 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				9C4AF65A1A267CDE002E697E /* DEV */,
-				9CEDFEEB1A251C6B003AC502 /* CorePlot Classes */,
+				9CB60E461A31290B00BA873F /* CoreData Support */,
+				9CEDFEEB1A251C6B003AC502 /* Charting */,
 				9CEDFEE81A251A7E003AC502 /* Frameworks */,
 				946A37951A22D669005A5ADE /* AppDelegate.swift */,
 				946A37C41A234B82005A5ADE /* ReportViewController.swift */,
@@ -202,15 +199,23 @@
 			name = "Chart Themes";
 			sourceTree = "<group>";
 		};
-		9CC8005F1A311C06008EC10B /* Chart Legend */ = {
+		9CB60E461A31290B00BA873F /* CoreData Support */ = {
 			isa = PBXGroup;
 			children = (
-				9CC800581A311153008EC10B /* LegendTableViewController.swift */,
-				9C253A311A2FB67800428959 /* LegendTableView.swift */,
-				9CE628871A2FC86E00487623 /* LegendTableViewCell.swift */,
-				9CC8005D1A3114AC008EC10B /* LegendView.swift */,
+				9CD9C9BF1A30ECBE0002A2EA /* CoreDataSource.swift */,
+				9C6B83581A2E35D700D602E3 /* ChartPredicates.swift */,
 			);
-			name = "Chart Legend";
+			name = "CoreData Support";
+			sourceTree = "<group>";
+		};
+		9CC8005F1A311C06008EC10B /* Pie Chart */ = {
+			isa = PBXGroup;
+			children = (
+				9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */,
+				9CC800581A311153008EC10B /* LegendTableViewController.swift */,
+				9CE628871A2FC86E00487623 /* LegendTableViewCell.swift */,
+			);
+			name = "Pie Chart";
 			sourceTree = "<group>";
 		};
 		9CEDFED31A251821003AC502 /* Products */ = {
@@ -234,16 +239,13 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		9CEDFEEB1A251C6B003AC502 /* CorePlot Classes */ = {
+		9CEDFEEB1A251C6B003AC502 /* Charting */ = {
 			isa = PBXGroup;
 			children = (
-				9CD9C9BF1A30ECBE0002A2EA /* CoreDataSource.swift */,
-				9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */,
-				9C6B83581A2E35D700D602E3 /* ChartPredicates.swift */,
 				9C6B835F1A2E613400D602E3 /* Chart Themes */,
-				9CC8005F1A311C06008EC10B /* Chart Legend */,
+				9CC8005F1A311C06008EC10B /* Pie Chart */,
 			);
-			name = "CorePlot Classes";
+			name = Charting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,10 +375,8 @@
 				946A37991A22D669005A5ADE /* travel_expense.xcdatamodeld in Sources */,
 				946A37961A22D669005A5ADE /* AppDelegate.swift in Sources */,
 				9CE7DCA41A2562AC00968DB8 /* GraphTheme.swift in Sources */,
-				9C253A321A2FB67800428959 /* LegendTableView.swift in Sources */,
 				9CEDFEEA1A251B1C003AC502 /* PieChartViewController.swift in Sources */,
 				946A37C51A234B82005A5ADE /* ReportViewController.swift in Sources */,
-				9CC8005E1A3114AC008EC10B /* LegendView.swift in Sources */,
 				9CD9C9C01A30ECBE0002A2EA /* CoreDataSource.swift in Sources */,
 				9C4AF6611A267EB3002E697E /* DEV_DataEntryViewController.swift in Sources */,
 				9CE628881A2FC86E00487623 /* LegendTableViewCell.swift in Sources */,

@@ -23,7 +23,6 @@ import UIKit
 class PieChartViewController:
 UIViewController,
 CPTPieChartDataSource,
-UITableViewDataSource,
 UITableViewDelegate
 {
     
@@ -37,25 +36,29 @@ UITableViewDelegate
     
     @IBOutlet var hostingView:CPTGraphHostingView!
     @IBOutlet var statusBar:UILabel!
-    @IBOutlet var testYear:UITextField!
-    @IBOutlet var legend:UITableView!
+    @IBOutlet var beginDate:UITextField!
+    @IBOutlet var endDate:UITextField!
     @IBOutlet var report:UISegmentedControl!
     
     @IBAction func reportChange(sender: UISegmentedControl) {
         println(sender.selectedSegmentIndex)
-        refreshDataSource_(-1)
+        //refreshDataSource_(-1)
         piePlot.reloadData()
-        legend.reloadData()
     }
     
-    func changeYear(sender: UIButton) {
+    @IBAction func changeDate(sender: UIButton) {
+        
+        println(coreData_.dateFormatter.dateFromString(beginDate.text))
+        
         refreshDataSource_(
-            (self.testYear.text as NSString).integerValue)
+            coreData_.dateFormatter.dateFromString(beginDate.text)!,
+            endDate: coreData_.dateFormatter.dateFromString(endDate.text)!)
+            
+    // (self.testYear.text as NSString).integerValue)
         piePlot.reloadData()
-        legend.reloadData()
     }
- 
-    private func refreshDataSource_(date:Int) {
+    
+    private func refreshDataSource_(date: Int) {
         
         if (date < 0) {
             dataSource_.reload()
@@ -63,7 +66,23 @@ UITableViewDelegate
         }
         
         dataSource_
-            .setPredicate(ChartPredicates.yearly(year: date))
+            .setPredicate(
+                ChartPredicates.yearly(year: date))
+            .reload()
+    }
+    
+    private func refreshDataSource_(beginDate:NSDate, endDate:NSDate) {
+        
+        /*
+        if (date < 0) {
+            dataSource_.reload()
+            return
+        }
+        */
+        
+        dataSource_
+            .setPredicate(
+                ChartPredicates.customDateRange(beginDate, end: endDate))
             .reload()
     }
     
@@ -72,10 +91,6 @@ UITableViewDelegate
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        // link the legend to the datasource
-        legend.dataSource = self
-        legend.delegate = self
         
         // build the chart
         let newGraph = CPTXYGraph()
@@ -86,7 +101,7 @@ UITableViewDelegate
         piePlot = CPTPieChart()
         piePlot.dataSource      = self
         piePlot.delegate        = self
-        piePlot.pieRadius       = 125.0
+        piePlot.pieRadius       = 85.0
         piePlot.identifier      = "Pie Chart 1"
         piePlot.startAngle      = CGFloat(M_PI_4)
         piePlot.sliceDirection  = .CounterClockwise
@@ -104,13 +119,21 @@ UITableViewDelegate
         println("view did appear")
         super.viewDidAppear(animated)
         
+        /*
         let date:Int = ((self.testYear.text as NSString).integerValue == 0) ?
             2014 :
             (self.testYear.text as NSString).integerValue
+        */
         
-        refreshDataSource_(date)
+        if (beginDate.text.isEmpty) {
+            refreshDataSource_(2014)
+        } else {
+            println("got")
+            refreshDataSource_(
+                coreData_.dateFormatter.dateFromString(beginDate.text)!,
+                endDate: coreData_.dateFormatter.dateFromString(endDate.text)!)
+        }
         piePlot.reloadData()
-        legend.reloadData()
     }
     
     // MARK: - Plot Data Source Methods
@@ -120,6 +143,7 @@ UITableViewDelegate
     }
     
     func numberOfRecordsForPlot(plot: CPTPlot!) -> UInt {
+        println("count: \(dataSource_.count())")
         return UInt(dataSource_.count())
     }
     
@@ -164,6 +188,7 @@ UITableViewDelegate
             offset = 2 //piePlot.pieRadius / 10.0
         }
         //println(offset)
+        offset = 2
         return offset
     }
    
@@ -175,8 +200,8 @@ UITableViewDelegate
         
         var value = dataSource_.get(
             reportTypes[report.selectedSegmentIndex],
-            index: Int(recordIndex))
-        statusBar.text = "DEV Value: \(value) | Selected index: \(recordIndex)"
+            index: Int(recordIndex)) as? NSString
+        statusBar.text = "DEV Value: \(value)"
         
         // CRAP: No likey global static
         idx = recordIndex
@@ -188,9 +213,14 @@ UITableViewDelegate
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        var value = dataSource_.get(
+            reportTypes[report.selectedSegmentIndex],
+            index: Int(indexPath.row)) as? NSString
+        statusBar.text = "DEV Value: \(value)"
+        
         //println(chartData_.count)
         println(dataSource_.count())
-        println("select")
         // CRAP: No likey global static
         idx = UInt(indexPath.row)
         // force a redraw
@@ -198,52 +228,18 @@ UITableViewDelegate
 
     }
     
-    
-    // MARK: - UITableViewDataSource
-    
-    func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
-    
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        println("refresh: \(dataSource_.count())")
-        return dataSource_.count()
-    }
-
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell:LegendTableViewCell = tableView
-            .dequeueReusableCellWithIdentifier(
-                "reuseIdentifier",
-                forIndexPath: indexPath) as LegendTableViewCell
-        
-        let color:UIColor = CPTPieChart
-            .defaultPieSliceColorForIndex(UInt(indexPath.row)).uiColor
-        cell.leftBorder.backgroundColor = color
-        cell.title.text = dataSource_.get(
-            "trip",
-            index: indexPath.row) as NSString
-        cell.subTitle.text = coreData_.dateFormatter
-            .stringFromDate(
-                dataSource_.get("tripDate", index: indexPath.row) as NSDate)
-        
-        return cell
-    }
-    
-    /*
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if (segue.identifier == "segue_embed_legend") {
+            let legendController:LegendTableViewController = segue.destinationViewController as LegendTableViewController
+            
+            legendController.delegate = self
+            legendController.setDataSource(dataSource_)
+        }
+    
     }
-    */
     
 }
