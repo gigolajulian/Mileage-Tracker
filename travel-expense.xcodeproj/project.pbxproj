@@ -18,6 +18,9 @@
 		946A37C11A231495005A5ADE /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C01A231495005A5ADE /* Trip.swift */; };
 		946A37C31A234132005A5ADE /* TripDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C21A234132005A5ADE /* TripDataModel.swift */; };
 		946A37C51A234B82005A5ADE /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37C41A234B82005A5ADE /* ReportViewController.swift */; };
+		9C0BFE621A32508C007B5572 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFE611A32508C007B5572 /* DatePickerViewController.swift */; };
+		9C0BFE671A32517D007B5572 /* DatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFE661A32517D007B5572 /* DatePickerDelegate.swift */; };
+		9C0BFE691A3254AC007B5572 /* DateFormatting_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFE681A3254AC007B5572 /* DateFormatting_Ext.swift */; };
 		9C4AF6611A267EB3002E697E /* DEV_DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */; };
 		9C6B83591A2E35D700D602E3 /* ChartPredicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B83581A2E35D700D602E3 /* ChartPredicates.swift */; };
 		9C6B835E1A2E603800D602E3 /* GraphThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B835D1A2E603800D602E3 /* GraphThemes.swift */; };
@@ -69,6 +72,9 @@
 		946A37C01A231495005A5ADE /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		946A37C21A234132005A5ADE /* TripDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDataModel.swift; sourceTree = "<group>"; };
 		946A37C41A234B82005A5ADE /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		9C0BFE611A32508C007B5572 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		9C0BFE661A32517D007B5572 /* DatePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDelegate.swift; sourceTree = "<group>"; };
+		9C0BFE681A3254AC007B5572 /* DateFormatting_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatting_Ext.swift; sourceTree = "<group>"; };
 		9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DEV_DataEntryViewController.swift; sourceTree = "<group>"; };
 		9C6B83581A2E35D700D602E3 /* ChartPredicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPredicates.swift; sourceTree = "<group>"; };
 		9C6B835D1A2E603800D602E3 /* GraphThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphThemes.swift; sourceTree = "<group>"; };
@@ -214,6 +220,9 @@
 				9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */,
 				9CC800581A311153008EC10B /* LegendTableViewController.swift */,
 				9CE628871A2FC86E00487623 /* LegendTableViewCell.swift */,
+				9C0BFE611A32508C007B5572 /* DatePickerViewController.swift */,
+				9C0BFE661A32517D007B5572 /* DatePickerDelegate.swift */,
+				9C0BFE681A3254AC007B5572 /* DateFormatting_Ext.swift */,
 			);
 			name = "Pie Chart";
 			sourceTree = "<group>";
@@ -368,8 +377,10 @@
 			files = (
 				9CC800591A311153008EC10B /* LegendTableViewController.swift in Sources */,
 				946A37C11A231495005A5ADE /* Trip.swift in Sources */,
+				9C0BFE671A32517D007B5572 /* DatePickerDelegate.swift in Sources */,
 				946A37BB1A22E50D005A5ADE /* TripListTableViewController.swift in Sources */,
 				946A37C31A234132005A5ADE /* TripDataModel.swift in Sources */,
+				9C0BFE621A32508C007B5572 /* DatePickerViewController.swift in Sources */,
 				946A37BD1A22E527005A5ADE /* TripViewController.swift in Sources */,
 				9C6B835E1A2E603800D602E3 /* GraphThemes.swift in Sources */,
 				946A37991A22D669005A5ADE /* travel_expense.xcdatamodeld in Sources */,
@@ -380,6 +391,7 @@
 				9CD9C9C01A30ECBE0002A2EA /* CoreDataSource.swift in Sources */,
 				9C4AF6611A267EB3002E697E /* DEV_DataEntryViewController.swift in Sources */,
 				9CE628881A2FC86E00487623 /* LegendTableViewCell.swift in Sources */,
+				9C0BFE691A3254AC007B5572 /* DateFormatting_Ext.swift in Sources */,
 				9C6B83591A2E35D700D602E3 /* ChartPredicates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

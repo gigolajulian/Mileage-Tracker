@@ -3,6 +3,12 @@
 //  travel-expense
 //
 //  Created by cisstudents on 12/3/14.
+// Authors:
+// Abi Kasraie
+// Julian Gigola
+// Michael Layman
+// Saan Saeteurn
+//
 //  Copyright (c) 2014 Saan Saeteurn. All rights reserved.
 //
 

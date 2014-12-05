@@ -2,20 +2,23 @@
 //  PieChartViewController.swift
 //  travel-expense
 //
-//  Created by MLayman on 11/25/14.
+// Created by Mileage Tracker Team on 12/4/14.
+// Authors:
+// Abi Kasraie
+// Julian Gigola
+// Michael Layman
+// Saan Saeteurn
+//
 //  Copyright (c) 2014 Saan Saeteurn. All rights reserved.
 //
 
 /*
 todo:
 
--legend (as seperate table?)
+-DONE: legend (as seperate table?)
 -stylings and chart labeling
--monthly yearly aggregates
--2nd bar chart
--input date intervals
--show data for picked data
--BUG: date change does not update legend table
+-DONE: input date intervals
+-DONE?: data for picked data
 */
 
 import UIKit
@@ -23,39 +26,79 @@ import UIKit
 class PieChartViewController:
 UIViewController,
 CPTPieChartDataSource,
-UITableViewDelegate
+UITableViewDelegate,
+DatePickerDelegate
 {
     
     private let coreData_:TripDataModel = TripDataModel()
+    private let dataSource_:CoreDataSource = CoreDataSource()
+    private let displaceHeight_:CGFloat = 50
     private var pieGraph : CPTXYGraph? = nil
     private var piePlot:CPTPieChart!
-    private let dataSource_:CoreDataSource = CoreDataSource()
+    private var constraint_:NSLayoutConstraint? = nil
+    private var legendViewController_:LegendTableViewController? = nil
+    private var changeDateMode_:Bool = false
+    
+    private var displayString_:NSString! = "Trips from: 1-1-2014 to: 12-31-2014"
+    
     // CRAP: No likey global static
     private var idx:UInt = 100000
     private var reportTypes:[NSString] = ["totalDistance","totalCost"]
     
     @IBOutlet var hostingView:CPTGraphHostingView!
     @IBOutlet var statusBar:UILabel!
-    @IBOutlet var beginDate:UITextField!
-    @IBOutlet var endDate:UITextField!
     @IBOutlet var report:UISegmentedControl!
+    @IBOutlet var datePickerContainer:UIView!
+    @IBOutlet var legendContainer:UIView!
+    @IBOutlet var dateTextIndicator:UILabel!
+    @IBOutlet var changeDateButton:UIButton!
     
     @IBAction func reportChange(sender: UISegmentedControl) {
         println(sender.selectedSegmentIndex)
-        //refreshDataSource_(-1)
         piePlot.reloadData()
     }
     
     @IBAction func changeDate(sender: UIButton) {
         
-        println(coreData_.dateFormatter.dateFromString(beginDate.text))
+        self.changeDateMode_ = !self.changeDateMode_
         
-        refreshDataSource_(
-            coreData_.dateFormatter.dateFromString(beginDate.text)!,
-            endDate: coreData_.dateFormatter.dateFromString(endDate.text)!)
-            
-    // (self.testYear.text as NSString).integerValue)
-        piePlot.reloadData()
+        if (self.changeDateMode_) {
+            displayString_ = dateTextIndicator.text!
+            dateTextIndicator.text = "Select a date range"
+            changeDateButton.setTitle("Q", forState: .Normal)
+        } else {
+            dateTextIndicator.text = displayString_
+            changeDateButton.setTitle("CD", forState: .Normal)
+        }
+        
+        toggleDatePicker_(self.changeDateMode_)
+    }
+    
+    private func toggleDatePicker_(flag:Bool) {
+        
+        constraint_?.setValue(
+            (flag) ? displaceHeight_ : 0,
+            forKey: "constant")
+        
+        UIView.animateWithDuration(0.25,
+            animations: {
+                self.view.layoutIfNeeded()
+            })
+        
+    }
+
+    private func applyLayoutConstraints_() {
+        // apply height constraint for animation
+        constraint_ = NSLayoutConstraint(
+            item: datePickerContainer,
+            attribute: NSLayoutAttribute.Height,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.NotAnAttribute,
+            multiplier: 1,
+            constant: 0)
+        
+        self.view.addConstraint(constraint_!)
     }
     
     private func refreshDataSource_(date: Int) {
@@ -72,14 +115,6 @@ UITableViewDelegate
     }
     
     private func refreshDataSource_(beginDate:NSDate, endDate:NSDate) {
-        
-        /*
-        if (date < 0) {
-            dataSource_.reload()
-            return
-        }
-        */
-        
         dataSource_
             .setPredicate(
                 ChartPredicates.customDateRange(beginDate, end: endDate))
@@ -101,17 +136,22 @@ UITableViewDelegate
         piePlot = CPTPieChart()
         piePlot.dataSource      = self
         piePlot.delegate        = self
-        piePlot.pieRadius       = 85.0
+        piePlot.pieRadius       = 90.0
         piePlot.identifier      = "Pie Chart 1"
         piePlot.startAngle      = CGFloat(M_PI_4)
         piePlot.sliceDirection  = .CounterClockwise
-        piePlot.centerAnchor    = CGPoint(x: 0.5, y: 0.5)
+        piePlot.centerAnchor    = CGPoint(x: 0.4, y: 0.5)
         piePlot.borderLineStyle = GraphThemes.PieChartLineStyle
         
         // add pie chart
         newGraph.addPlot(piePlot)
         
         self.pieGraph = newGraph
+        
+        // display
+        self.dateTextIndicator.text = displayString_
+        
+        applyLayoutConstraints_()
     }
     
     override func viewDidAppear(animated : Bool)
@@ -119,21 +159,51 @@ UITableViewDelegate
         println("view did appear")
         super.viewDidAppear(animated)
         
-        /*
-        let date:Int = ((self.testYear.text as NSString).integerValue == 0) ?
-            2014 :
-            (self.testYear.text as NSString).integerValue
-        */
+        refreshDataSource_(-1)
         
-        if (beginDate.text.isEmpty) {
-            refreshDataSource_(2014)
-        } else {
-            println("got")
-            refreshDataSource_(
-                coreData_.dateFormatter.dateFromString(beginDate.text)!,
-                endDate: coreData_.dateFormatter.dateFromString(endDate.text)!)
-        }
         piePlot.reloadData()
+        legendViewController_?.reloadData()
+    }
+
+    // MARK: - DatePickerDelegate Methods
+    
+    func datesSelected(beginDate:NSDate?, endDate:NSDate?) {
+    /*
+        Conditions:
+        1) Both have dates
+            -- update show dates
+        2) Only beginDate is populated
+            -- update show date to, "Trips for {date}"
+        3) Both are nil
+            -- return
+    */
+        
+        var begin:NSString! = beginDate?.dateToString("MM-dd-yyyy")
+        var end:NSString! = endDate?.dateToString("MM-dd-yyyy")
+        
+        if (begin != nil && end != nil) {
+            dateTextIndicator.text = "Trips from: \(begin) to: \(end)"
+            refreshDataSource_(
+                beginDate!,
+                endDate:endDate!)
+        } else if (begin != nil) {
+            dateTextIndicator.text = "Trips on \(begin)"
+            refreshDataSource_(
+                beginDate!,
+                endDate:beginDate!)
+        } else {
+            return
+        }
+        
+        displayString_ = dateTextIndicator.text
+        
+        // close up display
+        self.changeDateMode_ = !self.changeDateMode_
+        toggleDatePicker_(self.changeDateMode_)
+        changeDateButton.setTitle("CD", forState: .Normal)
+        
+        piePlot.reloadData()
+        legendViewController_?.reloadData()
     }
     
     // MARK: - Plot Data Source Methods
@@ -143,7 +213,6 @@ UITableViewDelegate
     }
     
     func numberOfRecordsForPlot(plot: CPTPlot!) -> UInt {
-        println("count: \(dataSource_.count())")
         return UInt(dataSource_.count())
     }
     
@@ -163,33 +232,9 @@ UITableViewDelegate
         }
     }
     
-    func dataLabelForPlot(plot: CPTPlot!, recordIndex: UInt) -> CPTLayer!
-    {
-        let label = CPTTextLayer(text:"\(recordIndex)")
-        
-        let textStyle = label.textStyle.mutableCopy() as CPTMutableTextStyle
-        textStyle.color = CPTColor.lightGrayColor()
-        
-        label.textStyle = textStyle
-        
-        return nil
-    }
-    
-    
     func radialOffsetForPieChart(piePlot: CPTPieChart!, recordIndex: UInt) -> CGFloat
     {
-        //println("offset")
-        var offset: CGFloat = 0.0
-        
-        if ( recordIndex == idx ) {
-            // pulls out a slice
-            offset = piePlot.pieRadius / 4.0
-        } else {
-            offset = 2 //piePlot.pieRadius / 10.0
-        }
-        //println(offset)
-        offset = 2
-        return offset
+        return 2
     }
    
     // MARK: - Delegate Methods
@@ -197,10 +242,10 @@ UITableViewDelegate
     func pieChart(plot: CPTPlot!, sliceWasSelectedAtRecordIndex recordIndex: UInt)
     {
         println("select slice")
-        
+        println(dataSource_.count())
         var value = dataSource_.get(
             reportTypes[report.selectedSegmentIndex],
-            index: Int(recordIndex)) as? NSString
+            index: Int(recordIndex)) as NSNumber
         statusBar.text = "DEV Value: \(value)"
         
         // CRAP: No likey global static
@@ -214,13 +259,13 @@ UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var value = dataSource_.get(
+        var value:NSNumber = dataSource_.get(
             reportTypes[report.selectedSegmentIndex],
-            index: Int(indexPath.row)) as? NSString
+            index: Int(indexPath.row)) as NSNumber
         statusBar.text = "DEV Value: \(value)"
         
-        //println(chartData_.count)
-        println(dataSource_.count())
+        println("Value: \(value)")
+        
         // CRAP: No likey global static
         idx = UInt(indexPath.row)
         // force a redraw
@@ -233,13 +278,24 @@ UITableViewDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+      println(segue.destinationViewController)
+      println(segue.identifier)
+        
         if (segue.identifier == "segue_embed_legend") {
             let legendController:LegendTableViewController = segue.destinationViewController as LegendTableViewController
             
             legendController.delegate = self
             legendController.setDataSource(dataSource_)
+            
+            // CRAP: THIS IS JUNK
+            legendViewController_ = legendController
         }
     
+        if (segue.identifier == "segue_embed_datePicker") {
+            let datePickerController:DatePickerViewController = segue.destinationViewController as DatePickerViewController
+            
+            datePickerController.datePickerDelegate = self
+        }
     }
     
 }

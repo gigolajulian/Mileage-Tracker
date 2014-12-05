@@ -66,7 +66,7 @@ struct ChartPredicates {
     {
         let preds:[NSPredicate!]! = [
                 NSPredicate(format: "(tripDate >= %@)",start),
-                NSPredicate(format: "(tripDate < %@)",end)]
+                NSPredicate(format: "(tripDate <= %@)",end)]
 
         return NSCompoundPredicate(
             type: NSCompoundPredicateType.AndPredicateType,
