@@ -59,7 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		944AE1E31A32F822000311FE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		944AE1E31A32F822000311FE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ../MapViewController.swift; sourceTree = "<group>"; };
 		944AE1E51A33032D000311FE /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		946A37901A22D668005A5ADE /* travel-expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "travel-expense.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		946A37941A22D669005A5ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,7 +126,6 @@
 		946A37871A22D668005A5ADE = {
 			isa = PBXGroup;
 			children = (
-				944AE1E31A32F822000311FE /* MapViewController.swift */,
 				B95FD9DE1A2742F400D12E65 /* MapKit.framework */,
 				9CEDFED21A251821003AC502 /* CorePlot-CocoaTouch.xcodeproj */,
 				946A37921A22D668005A5ADE /* travel-expense */,
@@ -154,6 +153,7 @@
 				946A37951A22D669005A5ADE /* AppDelegate.swift */,
 				946A37C41A234B82005A5ADE /* ReportViewController.swift */,
 				946A37BC1A22E527005A5ADE /* TripViewController.swift */,
+				944AE1E31A32F822000311FE /* MapViewController.swift */,
 				946A37BA1A22E50D005A5ADE /* TripListTableViewController.swift */,
 				946A37C21A234132005A5ADE /* TripDataModel.swift */,
 				946A37C01A231495005A5ADE /* Trip.swift */,
