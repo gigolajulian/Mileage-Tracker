@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		944AE1E41A32F822000311FE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AE1E31A32F822000311FE /* MapViewController.swift */; };
+		944AE1E61A33032D000311FE /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AE1E51A33032D000311FE /* EmailViewController.swift */; };
 		946A37961A22D669005A5ADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37951A22D669005A5ADE /* AppDelegate.swift */; };
 		946A37991A22D669005A5ADE /* travel_expense.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 946A37971A22D669005A5ADE /* travel_expense.xcdatamodeld */; };
 		946A37A01A22D669005A5ADE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946A379F1A22D669005A5ADE /* Images.xcassets */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		944AE1E31A32F822000311FE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		944AE1E51A33032D000311FE /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		946A37901A22D668005A5ADE /* travel-expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "travel-expense.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		946A37941A22D669005A5ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		946A37951A22D669005A5ADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				946A37C01A231495005A5ADE /* Trip.swift */,
 				B99445181A3075EC00EEDBB6 /* S.m4a */,
 				946A37B81A22D7DC005A5ADE /* Main.storyboard */,
+				944AE1E51A33032D000311FE /* EmailViewController.swift */,
 				946A379F1A22D669005A5ADE /* Images.xcassets */,
 				946A37A11A22D669005A5ADE /* LaunchScreen.xib */,
 				946A37971A22D669005A5ADE /* travel_expense.xcdatamodeld */,
@@ -309,6 +312,7 @@
 				TargetAttributes = {
 					946A378F1A22D668005A5ADE = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 2NKLZJVG9L;
 					};
 					946A37A71A22D669005A5ADE = {
 						CreatedOnToolsVersion = 6.1;
@@ -396,6 +400,7 @@
 				9CE628881A2FC86E00487623 /* LegendTableViewCell.swift in Sources */,
 				9C0BFE691A3254AC007B5572 /* DateFormatting_Ext.swift in Sources */,
 				9C6B83591A2E35D700D602E3 /* ChartPredicates.swift in Sources */,
+				944AE1E61A33032D000311FE /* EmailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
