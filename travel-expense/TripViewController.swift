@@ -159,14 +159,47 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    /*
+    override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
+        if identifier == "showLocation" {
+            
+            if (textFieldOrigin.text.isEmpty || textFieldDestination.text.isEmpty) {
+                
+                let alert = UIAlertView()
+                alert.title = "Location Fields Are Empty!"
+                alert.message = "Please input your locations."
+                alert.addButtonWithTitle("OK")
+                alert.show()
+                
+                return false
+            }
+                
+            else {
+                return true
+            }
+        }
+        
+        // by default, transition
+        return true
+    }
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        println("View Map button press")
+        
+        if (segue.identifier == "showLocation") {
+            var mapNavController = segue.destinationViewController as UINavigationController
+            var mapViewController = mapNavController.viewControllers[0] as MapViewController
+            mapViewController.origin = textFieldOrigin.text as NSString
+            mapViewController.destination = textFieldDestination.text as NSString
+            mapViewController.tripName = textFieldTrip.text as NSString
+            mapViewController.totalDistance = textFieldTotalDistance.text as NSString
+        }
     }
-    */
 
 }

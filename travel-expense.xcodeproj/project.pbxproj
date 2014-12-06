@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		944AE1E41A32F822000311FE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AE1E31A32F822000311FE /* MapViewController.swift */; };
 		946A37961A22D669005A5ADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A37951A22D669005A5ADE /* AppDelegate.swift */; };
 		946A37991A22D669005A5ADE /* travel_expense.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 946A37971A22D669005A5ADE /* travel_expense.xcdatamodeld */; };
 		946A37A01A22D669005A5ADE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946A379F1A22D669005A5ADE /* Images.xcassets */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		944AE1E31A32F822000311FE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		946A37901A22D668005A5ADE /* travel-expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "travel-expense.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		946A37941A22D669005A5ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		946A37951A22D669005A5ADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		946A37871A22D668005A5ADE = {
 			isa = PBXGroup;
 			children = (
+				944AE1E31A32F822000311FE /* MapViewController.swift */,
 				B95FD9DE1A2742F400D12E65 /* MapKit.framework */,
 				9CEDFED21A251821003AC502 /* CorePlot-CocoaTouch.xcodeproj */,
 				946A37921A22D668005A5ADE /* travel-expense */,
@@ -306,7 +309,6 @@
 				TargetAttributes = {
 					946A378F1A22D668005A5ADE = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 2NKLZJVG9L;
 					};
 					946A37A71A22D669005A5ADE = {
 						CreatedOnToolsVersion = 6.1;
@@ -382,6 +384,7 @@
 				946A37C31A234132005A5ADE /* TripDataModel.swift in Sources */,
 				9C0BFE621A32508C007B5572 /* DatePickerViewController.swift in Sources */,
 				946A37BD1A22E527005A5ADE /* TripViewController.swift in Sources */,
+				944AE1E41A32F822000311FE /* MapViewController.swift in Sources */,
 				9C6B835E1A2E603800D602E3 /* GraphThemes.swift in Sources */,
 				946A37991A22D669005A5ADE /* travel_expense.xcdatamodeld in Sources */,
 				946A37961A22D669005A5ADE /* AppDelegate.swift in Sources */,
