@@ -140,7 +140,7 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
         //if (cell == nil) {
         //    cell = CustomTableCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)   }
    
-        cell.textLabel.text = tripObject.trip
+        cell.textLabel?.text = tripObject.trip
         var tripDateString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
         cell.detailTextLabel?.text = tripDateString + " - " + tripObject.tripDescription
         
@@ -150,7 +150,8 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         
-        return true
+
+    return true
     }
     
     // Override to support editing the table view.

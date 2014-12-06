@@ -40,6 +40,10 @@ DatePickerDelegate
     private var changeDateMode_:Bool = false
     
     private var displayString_:NSString! = "Trips from: 1-1-2014 to: 12-31-2014"
+ 
+    private let cancelImg_:UIImage = UIImage(named:"CANCEL.png")!
+    //private let okImg_:UIImage = UIImage("OK.png")
+    private let calendarImg_:UIImage = UIImage(named:"CALENDAR.png")!
     
     // CRAP: No likey global static
     private var idx:UInt = 100000
@@ -52,10 +56,13 @@ DatePickerDelegate
     @IBOutlet var legendContainer:UIView!
     @IBOutlet var dateTextIndicator:UILabel!
     @IBOutlet var changeDateButton:UIButton!
+    @IBOutlet var tertiaryStatusBar:UILabel!
     
     @IBAction func reportChange(sender: UISegmentedControl) {
         println(sender.selectedSegmentIndex)
         piePlot.reloadData()
+        tertiaryStatusBar.text = "Total: \(totalValue_(reportTypes[report.selectedSegmentIndex]))"
+        
     }
     
     @IBAction func changeDate(sender: UIButton) {
@@ -65,10 +72,12 @@ DatePickerDelegate
         if (self.changeDateMode_) {
             displayString_ = dateTextIndicator.text!
             dateTextIndicator.text = "Select a date range"
-            changeDateButton.setTitle("Q", forState: .Normal)
+            //changeDateButton.setTitle("Q", forState: .Normal)
+            changeDateButton.setBackgroundImage(cancelImg_, forState: UIControlState.Normal)
         } else {
             dateTextIndicator.text = displayString_
-            changeDateButton.setTitle("CD", forState: .Normal)
+            //changeDateButton.setTitle("CD", forState: .Normal)
+            changeDateButton.setBackgroundImage(calendarImg_, forState: UIControlState.Normal)
         }
         
         toggleDatePicker_(self.changeDateMode_)
@@ -87,6 +96,14 @@ DatePickerDelegate
         
     }
 
+    private func totalValue_(field:NSString) -> NSNumber {
+        var num:CGFloat = 0.0
+        for (var i:Int = 0; i < dataSource_.count(); i++) {
+            num = num + (dataSource_.get(field, index:i) as CGFloat)
+        }
+        return num
+    }
+    
     private func applyLayoutConstraints_() {
         // apply height constraint for animation
         constraint_ = NSLayoutConstraint(
@@ -140,7 +157,7 @@ DatePickerDelegate
         piePlot.identifier      = "Pie Chart 1"
         piePlot.startAngle      = CGFloat(M_PI_4)
         piePlot.sliceDirection  = .CounterClockwise
-        piePlot.centerAnchor    = CGPoint(x: 0.4, y: 0.5)
+        piePlot.centerAnchor    = CGPoint(x: 0.5, y: 0.5)
         piePlot.borderLineStyle = GraphThemes.PieChartLineStyle
         
         // add pie chart
@@ -152,6 +169,11 @@ DatePickerDelegate
         self.dateTextIndicator.text = displayString_
         
         applyLayoutConstraints_()
+        
+        // set calendar button image
+        changeDateButton.setBackgroundImage(calendarImg_, forState: UIControlState.Normal)
+        
+    
     }
     
     override func viewDidAppear(animated : Bool)
@@ -163,6 +185,9 @@ DatePickerDelegate
         
         piePlot.reloadData()
         legendViewController_?.reloadData()
+        
+        tertiaryStatusBar.text = "Total: \(totalValue_(reportTypes[report.selectedSegmentIndex]))"
+        
     }
 
     // MARK: - DatePickerDelegate Methods
@@ -200,10 +225,13 @@ DatePickerDelegate
         // close up display
         self.changeDateMode_ = !self.changeDateMode_
         toggleDatePicker_(self.changeDateMode_)
-        changeDateButton.setTitle("CD", forState: .Normal)
+        changeDateButton.setBackgroundImage(calendarImg_, forState: UIControlState.Normal)
         
         piePlot.reloadData()
         legendViewController_?.reloadData()
+    
+        tertiaryStatusBar.text = "Total: \(totalValue_(reportTypes[report.selectedSegmentIndex]))"
+        
     }
     
     // MARK: - Plot Data Source Methods
@@ -246,7 +274,7 @@ DatePickerDelegate
         var value = dataSource_.get(
             reportTypes[report.selectedSegmentIndex],
             index: Int(recordIndex)) as NSNumber
-        statusBar.text = "DEV Value: \(value)"
+        statusBar.text = "Value: \(value)"
         
         // CRAP: No likey global static
         idx = recordIndex
@@ -262,7 +290,7 @@ DatePickerDelegate
         var value:NSNumber = dataSource_.get(
             reportTypes[report.selectedSegmentIndex],
             index: Int(indexPath.row)) as NSNumber
-        statusBar.text = "DEV Value: \(value)"
+        statusBar.text = "Value: \(value)"
         
         println("Value: \(value)")
         
