@@ -49,8 +49,6 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         self.textFieldEmailAddress.text = ""
         self.textFieldSubject.text = ""
-        
-        
     }
        func calculateTripReportSummary() {
         var totalCount = trips.count
@@ -70,7 +68,6 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         self.summaryPlainText = headingText + "\n\n" + totalCountText + "\n\n" + totalDistanceText + "\n\n" + totalCostText + "\n\n" + footerText
         self.summaryHTML = headingText + "<br/><br/>" + totalCountText + "<br/><br/>" + totalDistanceText + "<br/><br/>" + totalCostText + "<br/><br/>" + footerText
-        
         
     }
     

@@ -356,7 +356,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.79305793125782342" green="1" blue="0.94775994249303752" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Trip" id="UyM-NA-A3s">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qbL-CE-cpO">
@@ -380,7 +380,7 @@
                         <outlet property="textFieldTotalDistance" destination="QOa-yU-Imz" id="5RT-YO-mVp"/>
                         <outlet property="textFieldTrip" destination="Kxb-7C-P2k" id="1qm-7k-Kpg"/>
                         <outlet property="textFieldTripDate" destination="ZHS-l1-LYo" id="p39-Ju-y9G"/>
-                        <outlet property="textFieldTripDescription" destination="V6Z-Dv-TWC" id="6F9-nH-QLu"/>
+                        <outlet property="textFieldTripDescription" destination="V6Z-Dv-TWC" id="02v-fD-Hnj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ok6-CI-CnS" userLabel="First Responder" sceneMemberID="firstResponder"/>

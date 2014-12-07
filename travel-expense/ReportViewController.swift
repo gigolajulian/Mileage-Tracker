@@ -31,7 +31,6 @@ class ReportViewController: UIViewController {
         if let results = fetchResults {
             trips = results
             labelReports.text = "There are \(trips.count) trips."
-            
         }
         
     }

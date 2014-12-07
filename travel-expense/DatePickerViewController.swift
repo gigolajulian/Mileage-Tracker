@@ -14,7 +14,7 @@
 
 import UIKit
 
-class DatePickerViewController: UIViewController {
+class DatePickerViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var beginDate:UITextField!
     @IBOutlet var endDate:UITextField!
@@ -40,6 +40,20 @@ class DatePickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        beginDate.delegate = self
+        endDate.delegate = self
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        // Hide keyboard when clicking away from text field.
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide keyboard when 'return' key is pressed.
+        textField.resignFirstResponder()
+        return true
     }
 
     override func didReceiveMemoryWarning() {

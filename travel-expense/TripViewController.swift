@@ -15,7 +15,7 @@
 import UIKit
 import AVFoundation
 
-class TripViewController: UIViewController, UITextFieldDelegate {
+class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     var saveSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("S", ofType: "m4a")!)
     var audioPlayer = AVAudioPlayer()
@@ -28,7 +28,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textFieldDestination: UITextField!
     @IBOutlet var textFieldTotalDistance: UITextField!
     @IBOutlet var textFieldTotalCost: UITextField!
-    //@IBOutlet var textFieldTripDescription: UITextField!
     @IBOutlet var buttonViewMap: UIButton!
     @IBOutlet var textFieldTripDescription: UITextView!
     
@@ -51,49 +50,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: Selector("tripDateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
-
-    func tripDateChanged(sender: UIDatePicker) {
-        textFieldTripDate.text = coreData.dateFormatter.stringFromDate(sender.date)
-    }
-
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        // Hide keyboard when clicking away from text field.
-        self.view.endEditing(true)
-    }
-
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        // Hide keyboard when 'return' key is pressed.
-
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        audioPlayer = AVAudioPlayer(contentsOfURL: saveSound, error: nil)
-        audioPlayer.prepareToPlay()
-      
-        // Set text fields to clear keyboard on 'return' key.
-        textFieldTrip.delegate = self
-        textFieldOrigin.delegate = self
-        textFieldDestination.delegate = self
-        textFieldTripDate.delegate = self
-        textFieldTotalDistance.delegate = self
-        textFieldTotalCost.delegate = self
-        //textFieldTripDescription.text = self
-        
-        if (existingTripObject != nil) {
-            textFieldTrip.text = trip
-            textFieldOrigin.text = origin
-            textFieldDestination.text = destination
-            textFieldTripDate.text = coreData.dateFormatter.stringFromDate(tripDate!)
-            textFieldTotalDistance.text = totalDistance.description
-            textFieldTotalCost.text = totalCost.description
-            textFieldTripDescription.text = tripDescription
-        }
-        
-    }
     
     @IBAction func buttonCancel(sender: AnyObject) {
         println("Cancel Button Pressed")
@@ -111,7 +67,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         3. Save our Trip object back into our data model.
         4. Navigate back to our main view controller.
         */
-        audioPlayer.play() 
         
         println("Save Button Pressed \(textFieldTrip.text).")
         
@@ -133,7 +88,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             var newTripObject = coreData.getNewTripObject()
             
             // 3. Map our properties.
-            println(textFieldTrip.text)
             newTripObject.trip = textFieldTrip.text
             newTripObject.origin = self.textFieldOrigin.text
             newTripObject.destination = textFieldDestination.text
@@ -141,16 +95,76 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             newTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
             newTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
             newTripObject.tripDescription = textFieldTripDescription.text
-            
-            println(newTripObject)
-            println("New TaskItem Object Saved.")
         }
         
-        // 3. Save our TaskItem object back into our data model.
-        context.save(nil)
+        if (textFieldTrip.text.isEmpty || textFieldDestination.text.isEmpty) {
+            let alert = UIAlertView()
+            alert.title = "Trip name or destination field cannot be empty."
+            alert.message = "Please try again."
+            alert.addButtonWithTitle("OK")
+            alert.show()
+            
+        }
+        else {
+            // 3. Save our TaskItem object back into our data model.
+            context.save(nil)
+            audioPlayer.play()
+            
+            // 4. Navigate back to our main view controller.
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
         
-        // 4. Navigate back to our main view controller.
-        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+
+    func tripDateChanged(sender: UIDatePicker) {
+        textFieldTripDate.text = coreData.dateFormatter.stringFromDate(sender.date)
+    }
+
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        // Hide keyboard when clicking away from text field.
+        self.view.endEditing(true)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide keyboard when 'return' key is pressed.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        audioPlayer = AVAudioPlayer(contentsOfURL: saveSound, error: nil)
+        audioPlayer.prepareToPlay()
+      
+        // Set text fields to clear keyboard on 'return' key.
+        textFieldTrip.delegate = self
+        textFieldOrigin.delegate = self
+        textFieldDestination.delegate = self
+        textFieldTripDate.delegate = self
+        textFieldTotalDistance.delegate = self
+        textFieldTotalCost.delegate = self
+        textFieldTripDescription.delegate = self
+        
+        if (existingTripObject != nil) {
+            textFieldTrip.text = trip
+            textFieldOrigin.text = origin
+            textFieldDestination.text = destination
+            textFieldTripDate.text = coreData.dateFormatter.stringFromDate(tripDate!)
+            textFieldTotalDistance.text = totalDistance.description
+            textFieldTotalCost.text = totalCost.description
+            textFieldTripDescription.text = tripDescription
+        }
+        
+        if (textFieldTripDescription.text == "") {
+            textViewDidEndEditing(textFieldTripDescription)
+        }
+        
+        var tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(tapDismiss)
+
+        var currentDate : NSDate? = NSDate()
+        textFieldTripDate.text = coreData.dateFormatter.stringFromDate(currentDate!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -158,14 +172,35 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissKeyboard(){
+        textFieldTripDescription.resignFirstResponder()
+    }
+    
+    func textViewDidEndEditing(descriptionTextView: UITextView) {
+        if (descriptionTextView.text == "") {
+            descriptionTextView.text = "Enter trip description..."
+            descriptionTextView.textColor = UIColor.lightGrayColor()
+        }
+        
+        textFieldTripDescription.resignFirstResponder()
+    }
+    
+    func textViewDidBeginEditing(descriptionTextView: UITextView){
+        if (descriptionTextView.text == "Enter trip description..."){
+            descriptionTextView.text = ""
+            descriptionTextView.textColor = UIColor.blackColor()
+        }
+        
+        textFieldTripDescription.becomeFirstResponder()
+    }
 
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
         if identifier == "showLocation" {
             
-            if (textFieldOrigin.text.isEmpty || textFieldDestination.text.isEmpty || textFieldTripDate.text.isEmpty) {
+            if (textFieldTrip.text.isEmpty || textFieldDestination.text.isEmpty) {
                 
                 let alert = UIAlertView()
-                alert.title = "Location Fields Are Empty!"
+                alert.title = "Trip name field or destination field cannot be empty."
                 alert.message = "Please input your locations."
                 alert.addButtonWithTitle("OK")
                 alert.show()

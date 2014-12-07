@@ -83,8 +83,6 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if segue.identifier == "update" {
-            //var selectedTripObject: Trip = tripList[self.tableView.indexPathForSelectedRow()!.row] as Trip
-            //let tripViewController = segue.destinationViewController as TripViewController
             
             var selectedTripObject: Trip
             
@@ -105,15 +103,11 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
             tripViewController.trip = selectedTripObject.trip
             tripViewController.origin = selectedTripObject.origin
             tripViewController.destination = selectedTripObject.destination
-            //tripViewController.tripDate = selectedTripObject.tripDate
+            tripViewController.tripDate = selectedTripObject.tripDate
             tripViewController.totalDistance = selectedTripObject.totalDistance
             tripViewController.totalCost = selectedTripObject.totalCost
             tripViewController.tripDescription = selectedTripObject.tripDescription
             tripViewController.existingTripObject = selectedTripObject
-        }
-        
-        if segue.identifier == "newTrip" {
-            println("DEBUG: New Trip")
         }
 
     }
@@ -128,7 +122,6 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
     }
 
     override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        
         if tableView == self.searchDisplayController!.searchResultsTableView {
             return filteredTripList.count
         } else {
@@ -147,12 +140,8 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
         if tableView == self.searchDisplayController!.searchResultsTableView {
             tripObject = filteredTripList[row!]  }
         else {  tripObject = tripList[row!]  }
-
-        // Configure the cell
-        //if (cell == nil) {
-        //    cell = CustomTableCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)   }
    
-        cell.textLabel?.text = tripObject.trip
+        cell.textLabel.text = tripObject.trip
         var tripDateString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
         cell.detailTextLabel?.text = tripDateString + " - " + tripObject.tripDescription
         
