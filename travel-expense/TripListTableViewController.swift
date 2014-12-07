@@ -141,7 +141,7 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
             tripObject = filteredTripList[row!]  }
         else {  tripObject = tripList[row!]  }
    
-        cell.textLabel.text = tripObject.trip
+        cell.textLabel!.text = tripObject.trip
         var tripDateString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
         cell.detailTextLabel?.text = tripDateString + " - " + tripObject.tripDescription
         

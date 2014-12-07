@@ -178,7 +178,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     func textViewDidEndEditing(descriptionTextView: UITextView) {
         if (descriptionTextView.text == "") {
-            descriptionTextView.text = "Enter trip description..."
+            descriptionTextView.text = "Optional"
             descriptionTextView.textColor = UIColor.lightGrayColor()
         }
         
