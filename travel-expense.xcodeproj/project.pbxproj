@@ -23,7 +23,6 @@
 		9C0BFE621A32508C007B5572 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFE611A32508C007B5572 /* DatePickerViewController.swift */; };
 		9C0BFE671A32517D007B5572 /* DatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFE661A32517D007B5572 /* DatePickerDelegate.swift */; };
 		9C0BFE691A3254AC007B5572 /* DateFormatting_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFE681A3254AC007B5572 /* DateFormatting_Ext.swift */; };
-		9C4AF6611A267EB3002E697E /* DEV_DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */; };
 		9C6B83591A2E35D700D602E3 /* ChartPredicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B83581A2E35D700D602E3 /* ChartPredicates.swift */; };
 		9C6B835E1A2E603800D602E3 /* GraphThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B835D1A2E603800D602E3 /* GraphThemes.swift */; };
 		9CC800591A311153008EC10B /* LegendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC800581A311153008EC10B /* LegendTableViewController.swift */; };
@@ -80,7 +79,6 @@
 		9C0BFE611A32508C007B5572 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		9C0BFE661A32517D007B5572 /* DatePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDelegate.swift; sourceTree = "<group>"; };
 		9C0BFE681A3254AC007B5572 /* DateFormatting_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatting_Ext.swift; sourceTree = "<group>"; };
-		9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DEV_DataEntryViewController.swift; sourceTree = "<group>"; };
 		9C6B83581A2E35D700D602E3 /* ChartPredicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPredicates.swift; sourceTree = "<group>"; };
 		9C6B835D1A2E603800D602E3 /* GraphThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphThemes.swift; sourceTree = "<group>"; };
 		9CC800581A311153008EC10B /* LegendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendTableViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 		946A37921A22D668005A5ADE /* travel-expense */ = {
 			isa = PBXGroup;
 			children = (
-				9C4AF65A1A267CDE002E697E /* DEV */,
 				9CB60E461A31290B00BA873F /* CoreData Support */,
 				9CEDFEEB1A251C6B003AC502 /* Charting */,
 				9CEDFEE81A251A7E003AC502 /* Frameworks */,
@@ -195,14 +192,6 @@
 				946A37AD1A22D669005A5ADE /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9C4AF65A1A267CDE002E697E /* DEV */ = {
-			isa = PBXGroup;
-			children = (
-				9C4AF6601A267EB3002E697E /* DEV_DataEntryViewController.swift */,
-			);
-			name = DEV;
 			sourceTree = "<group>";
 		};
 		9C6B835F1A2E613400D602E3 /* Chart Themes */ = {
@@ -400,7 +389,6 @@
 				9CEDFEEA1A251B1C003AC502 /* PieChartViewController.swift in Sources */,
 				946A37C51A234B82005A5ADE /* ReportViewController.swift in Sources */,
 				9CD9C9C01A30ECBE0002A2EA /* CoreDataSource.swift in Sources */,
-				9C4AF6611A267EB3002E697E /* DEV_DataEntryViewController.swift in Sources */,
 				9CE628881A2FC86E00487623 /* LegendTableViewCell.swift in Sources */,
 				9C0BFE691A3254AC007B5572 /* DateFormatting_Ext.swift in Sources */,
 				9C6B83591A2E35D700D602E3 /* ChartPredicates.swift in Sources */,
