@@ -69,8 +69,8 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
         var totalCostText = "Total overal cost: $ \(totalTripsCost)"
         var footerText = "End of trip summary."
         
-        self.summaryPlainText = headingText + "\n\n" + totalCountText + "\n" + totalDistanceText + "\n" + totalCostText + "\n\n" + footerText
-        self.summaryHTML = headingText + "<br/><br/>" + totalCountText + "<br/>" + totalDistanceText + "<br/>" + totalCostText + "<br/>" + footerText
+        self.summaryPlainText = headingText + "\n\n" + totalCountText + "\n\n" + totalDistanceText + "\n\n" + totalCostText + "\n\n" + footerText
+        self.summaryHTML = headingText + "<br/><br/>" + totalCountText + "<br/><br/>" + totalDistanceText + "<br/><br/>" + totalCostText + "<br/><br/>" + footerText
         
         
     }
