@@ -39,6 +39,7 @@
 		9CEDFEEA1A251B1C003AC502 /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */; };
 		B95FD9DF1A2742F400D12E65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95FD9DE1A2742F400D12E65 /* MapKit.framework */; };
 		B99445191A3075EC00EEDBB6 /* S.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B99445181A3075EC00EEDBB6 /* S.m4a */; };
+		B9F197761A33CBB1007C65F0 /* TripsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F197751A33CBB1007C65F0 /* TripsNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		9CEDFEE91A251B1C003AC502 /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 		B95FD9DE1A2742F400D12E65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B99445181A3075EC00EEDBB6 /* S.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = S.m4a; sourceTree = "<group>"; };
+		B9F197751A33CBB1007C65F0 /* TripsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,15 +153,16 @@
 				9CEDFEEB1A251C6B003AC502 /* Charting */,
 				9CEDFEE81A251A7E003AC502 /* Frameworks */,
 				946A37951A22D669005A5ADE /* AppDelegate.swift */,
+				944AE1E51A33032D000311FE /* EmailViewController.swift */,
 				946A37C41A234B82005A5ADE /* ReportViewController.swift */,
 				946A37BC1A22E527005A5ADE /* TripViewController.swift */,
 				944AE1E31A32F822000311FE /* MapViewController.swift */,
 				946A37BA1A22E50D005A5ADE /* TripListTableViewController.swift */,
 				946A37C21A234132005A5ADE /* TripDataModel.swift */,
 				946A37C01A231495005A5ADE /* Trip.swift */,
+				B9F197751A33CBB1007C65F0 /* TripsNavigationController.swift */,
 				B99445181A3075EC00EEDBB6 /* S.m4a */,
 				946A37B81A22D7DC005A5ADE /* Main.storyboard */,
-				944AE1E51A33032D000311FE /* EmailViewController.swift */,
 				946A379F1A22D669005A5ADE /* Images.xcassets */,
 				946A37A11A22D669005A5ADE /* LaunchScreen.xib */,
 				946A37971A22D669005A5ADE /* travel_expense.xcdatamodeld */,
@@ -383,6 +386,7 @@
 			files = (
 				9CC800591A311153008EC10B /* LegendTableViewController.swift in Sources */,
 				946A37C11A231495005A5ADE /* Trip.swift in Sources */,
+				B9F197761A33CBB1007C65F0 /* TripsNavigationController.swift in Sources */,
 				9C0BFE671A32517D007B5572 /* DatePickerDelegate.swift in Sources */,
 				946A37BB1A22E50D005A5ADE /* TripListTableViewController.swift in Sources */,
 				946A37C31A234132005A5ADE /* TripDataModel.swift in Sources */,

@@ -52,6 +52,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Mileage Tracker" id="aqw-5q-aOh">
+                        <barButtonItem key="leftBarButtonItem" title="Export" id="2k0-ba-pzz">
+                            <connections>
+                                <segue destination="bL6-IG-XIG" kind="show" id="bTZ-JS-abl"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ELo-GP-JjT">
                             <connections>
                                 <segue destination="cQi-lj-I6e" kind="show" identifier="add" id="jRv-oe-PRV"/>
@@ -346,7 +351,6 @@
                         <segue destination="qJ1-hF-Ntv" kind="relationship" relationship="viewControllers" id="jOt-0S-Q1v"/>
                         <segue destination="nj6-9D-6Fl" kind="relationship" relationship="viewControllers" id="rMK-Yp-u9l"/>
                         <segue destination="fWf-9m-1u9" kind="relationship" relationship="viewControllers" id="TQO-oz-w16"/>
-                        <segue destination="vVR-Pj-Hat" kind="relationship" relationship="viewControllers" id="hs1-8g-sHQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdt-cr-pjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -572,11 +576,15 @@ Saan Saeteurn</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xd1-HL-dom">
-                                <rect key="frame" x="16" y="166" width="100" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Send Email">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8eb-eW-oKk">
+                                <rect key="frame" x="16" y="229" width="382" height="221"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xd1-HL-dom">
+                                <rect key="frame" x="187" y="180" width="41" height="41"/>
+                                <state key="normal" image="Send Mail">
                                     <color key="titleColor" red="0.18395850959999999" green="0.17146221110000001" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -584,21 +592,10 @@ Saan Saeteurn</string>
                                     <action selector="buttonSend:" destination="bL6-IG-XIG" eventType="touchUpInside" id="0bb-vW-H9d"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="test" translatesAutoresizingMaskIntoConstraints="NO" id="71l-AQ-dcx">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8eb-eW-oKk">
-                                <rect key="frame" x="16" y="229" width="382" height="221"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Email Trip Report" id="8FS-Ff-Wht"/>
+                    <navigationItem key="navigationItem" title="Export Report" id="8FS-Ff-Wht"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -609,7 +606,7 @@ Saan Saeteurn</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYv-0P-ZrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715" y="-796"/>
+            <point key="canvasLocation" x="-204" y="86"/>
         </scene>
         <!--About-->
         <scene sceneID="Hyu-OZ-fmb">
@@ -773,27 +770,6 @@ Saan Saeteurn</string>
             </objects>
             <point key="canvasLocation" x="297" y="928"/>
         </scene>
-        <!--Email-->
-        <scene sceneID="rrj-iu-rtI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vVR-Pj-Hat" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Email" id="ZRQ-Gc-zn2"/>
-                    <toolbarItems/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nAp-AT-4g7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bL6-IG-XIG" kind="relationship" relationship="rootViewController" id="EwU-Ww-eXK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LRS-0u-onZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1261" y="-1748"/>
-        </scene>
     </scenes>
     <resources>
         <image name="About" width="600" height="380"/>
@@ -803,6 +779,7 @@ Saan Saeteurn</string>
         <image name="OK" width="64" height="64"/>
         <image name="Reports Selected 30x30" width="46" height="52"/>
         <image name="Reports Unselected 30x30" width="46" height="52"/>
+        <image name="Send Mail" width="128" height="128"/>
         <image name="Trips Selected 30x30" width="60" height="50"/>
         <image name="Trips Unselected 30x30" width="60" height="50"/>
     </resources>

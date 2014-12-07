@@ -24,7 +24,6 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
     var summaryPlainText : String!
     var summaryHTML : String!
     
-    
     @IBOutlet var textFieldEmailAddress: UITextField!
     
     @IBOutlet var textFieldSubject: UITextField!
@@ -50,6 +49,7 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         self.textFieldEmailAddress.text = ""
         self.textFieldSubject.text = ""
+        
         
     }
     
