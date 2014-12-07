@@ -48,14 +48,26 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
         tableView.reloadData()
     }
     
+    // Function to convert the input text to all Caps
+    func capsVersion (origString : String) -> String {
+        var capsInput = String()
+        for c in origString {
+            capsInput = capsInput + String(c).uppercaseString
+        }
+        return capsInput
+    }
+    
     // Filter the Array if Search Text exists in Trip Name
     func filterContentForSearchText(searchText: String) {
         self.filteredTripList = self.tripList.filter({(tripObject: Trip)  -> Bool in
-            let stringMatch = tripObject.trip.rangeOfString(searchText)
+            var baseStr = self.capsVersion(tripObject.trip)
+            var searchStr = self.capsVersion(searchText)
+            let stringMatch = baseStr.rangeOfString(searchStr)
             return stringMatch != nil   })
     }
 
-    // These two methods are part of the UISearchDisplayControllerDelegate protocol:
+    //     These two methods are part of the
+    //     UISearchDisplayControllerDelegate protocol:
     // Method 1
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
         self.filterContentForSearchText(searchString)
@@ -140,7 +152,7 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
         //if (cell == nil) {
         //    cell = CustomTableCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)   }
    
-        cell.textLabel.text = tripObject.trip
+        cell.textLabel?.text = tripObject.trip
         var tripDateString: NSString = coreData.dateFormatter.stringFromDate(tripObject.tripDate)
         cell.detailTextLabel?.text = tripDateString + " - " + tripObject.tripDescription
         
