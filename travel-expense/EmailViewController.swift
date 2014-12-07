@@ -30,7 +30,6 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     @IBOutlet var textViewBody: UITextView!
 
-    
     @IBAction func buttonSend(sender: UIButton) {
         
         var subjectText = textViewBody.text
@@ -49,8 +48,6 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         self.textFieldEmailAddress.text = ""
         self.textFieldSubject.text = ""
-        
-        
     }
     
     func calculateTripReportSummary() {
@@ -71,7 +68,6 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         self.summaryPlainText = headingText + "\n\n" + totalCountText + "\n\n" + totalDistanceText + "\n\n" + totalCostText + "\n\n" + footerText
         self.summaryHTML = headingText + "<br/><br/>" + totalCountText + "<br/><br/>" + totalDistanceText + "<br/><br/>" + totalCostText + "<br/><br/>" + footerText
-        
         
     }
     

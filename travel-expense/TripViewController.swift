@@ -88,7 +88,6 @@ class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             var newTripObject = coreData.getNewTripObject()
             
             // 3. Map our properties.
-            println(textFieldTrip.text)
             newTripObject.trip = textFieldTrip.text
             newTripObject.origin = self.textFieldOrigin.text
             newTripObject.destination = textFieldDestination.text
@@ -104,6 +103,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             alert.message = "Please try again."
             alert.addButtonWithTitle("OK")
             alert.show()
+            
         }
         else {
             // 3. Save our TaskItem object back into our data model.
@@ -127,7 +127,6 @@ class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide keyboard when 'return' key is pressed.
-
         textField.resignFirstResponder()
         return true
     }
@@ -160,13 +159,12 @@ class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         if (textFieldTripDescription.text == "") {
             textViewDidEndEditing(textFieldTripDescription)
         }
+        
         var tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapDismiss)
 
         var currentDate : NSDate? = NSDate()
         textFieldTripDate.text = coreData.dateFormatter.stringFromDate(currentDate!)
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -186,6 +184,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         textFieldTripDescription.resignFirstResponder()
     }
+    
     func textViewDidBeginEditing(descriptionTextView: UITextView){
         if (descriptionTextView.text == "Enter trip description..."){
             descriptionTextView.text = ""

@@ -122,7 +122,6 @@ class TripListTableViewController: UITableViewController, UISearchBarDelegate, U
     }
 
     override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        
         if tableView == self.searchDisplayController!.searchResultsTableView {
             return filteredTripList.count
         } else {
