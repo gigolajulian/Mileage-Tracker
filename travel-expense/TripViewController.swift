@@ -15,7 +15,7 @@
 import UIKit
 import AVFoundation
 
-class TripViewController: UIViewController, UITextFieldDelegate {
+class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     var saveSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("S", ofType: "m4a")!)
     var audioPlayer = AVAudioPlayer()
@@ -28,7 +28,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textFieldDestination: UITextField!
     @IBOutlet var textFieldTotalDistance: UITextField!
     @IBOutlet var textFieldTotalCost: UITextField!
-    //@IBOutlet var textFieldTripDescription: UITextField!
     @IBOutlet var buttonViewMap: UIButton!
     @IBOutlet var textFieldTripDescription: UITextView!
     
@@ -50,6 +49,71 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         datePickerView.datePickerMode = UIDatePickerMode.Date
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: Selector("tripDateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    @IBAction func buttonCancel(sender: AnyObject) {
+        println("Cancel Button Pressed")
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    @IBAction func butttonSave(sender: AnyObject) {
+        /*
+        On button click, do the followings:
+        
+        1. Get NSManageObjectContext(moc) from our app delegate.
+        2a. Create a new Trip instance using our entity and context objecets.
+        2b. Set the outlet data to our Trip object's attributes.
+        3. Save our Trip object back into our data model.
+        4. Navigate back to our main view controller.
+        */
+        
+        println("Save Button Pressed \(textFieldTrip.text).")
+        
+        // 1. Get NSManageObjectContext(moc) from our app delegate.
+        let context = coreData.getManageObjectContext()
+        
+        // 2a. Set current Trip object if it exists.
+        if (existingTripObject != nil) {
+            existingTripObject.trip = textFieldTrip.text
+            existingTripObject.origin = textFieldOrigin.text
+            existingTripObject.destination = textFieldDestination.text
+            existingTripObject.tripDate = coreData.dateFormatter.dateFromString(textFieldTripDate.text!)!
+            existingTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
+            existingTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
+            existingTripObject.tripDescription = textFieldTripDescription.text
+            
+        } else {
+            // 2b. Create a new instance to our data model.
+            var newTripObject = coreData.getNewTripObject()
+            
+            // 3. Map our properties.
+            println(textFieldTrip.text)
+            newTripObject.trip = textFieldTrip.text
+            newTripObject.origin = self.textFieldOrigin.text
+            newTripObject.destination = textFieldDestination.text
+            newTripObject.tripDate = coreData.dateFormatter.dateFromString(textFieldTripDate.text)!
+            newTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
+            newTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
+            newTripObject.tripDescription = textFieldTripDescription.text
+        }
+        
+        if (textFieldTrip.text.isEmpty || textFieldDestination.text.isEmpty) {
+            let alert = UIAlertView()
+            alert.title = "Trip name or destination field cannot be empty."
+            alert.message = "Please try again."
+            alert.addButtonWithTitle("OK")
+            alert.show()
+        }
+        else {
+            // 3. Save our TaskItem object back into our data model.
+            context.save(nil)
+            audioPlayer.play()
+            
+            // 4. Navigate back to our main view controller.
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
+        
     }
 
     func tripDateChanged(sender: UIDatePicker) {
@@ -81,7 +145,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         textFieldTripDate.delegate = self
         textFieldTotalDistance.delegate = self
         textFieldTotalCost.delegate = self
-        //textFieldTripDescription.text = self
+        textFieldTripDescription.delegate = self
         
         if (existingTripObject != nil) {
             textFieldTrip.text = trip
@@ -93,64 +157,16 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             textFieldTripDescription.text = tripDescription
         }
         
-    }
-    
-    @IBAction func buttonCancel(sender: AnyObject) {
-        println("Cancel Button Pressed")
-        
-        self.navigationController?.popToRootViewControllerAnimated(true)
-    }
-    
-    @IBAction func butttonSave(sender: AnyObject) {
-        /*
-        On button click, do the followings:
-        
-        1. Get NSManageObjectContext(moc) from our app delegate.
-        2a. Create a new Trip instance using our entity and context objecets.
-        2b. Set the outlet data to our Trip object's attributes.
-        3. Save our Trip object back into our data model.
-        4. Navigate back to our main view controller.
-        */
-        audioPlayer.play() 
-        
-        println("Save Button Pressed \(textFieldTrip.text).")
-        
-        // 1. Get NSManageObjectContext(moc) from our app delegate.
-        let context = coreData.getManageObjectContext()
-        
-        // 2a. Set current Trip object if it exists.
-        if (existingTripObject != nil) {
-            existingTripObject.trip = textFieldTrip.text
-            existingTripObject.origin = textFieldOrigin.text
-            existingTripObject.destination = textFieldDestination.text
-            existingTripObject.tripDate = coreData.dateFormatter.dateFromString(textFieldTripDate.text!)!
-            existingTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
-            existingTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
-            existingTripObject.tripDescription = textFieldTripDescription.text
-            
-        } else {
-            // 2b. Create a new instance to our data model.
-            var newTripObject = coreData.getNewTripObject()
-            
-            // 3. Map our properties.
-            println(textFieldTrip.text)
-            newTripObject.trip = textFieldTrip.text
-            newTripObject.origin = self.textFieldOrigin.text
-            newTripObject.destination = textFieldDestination.text
-            newTripObject.tripDate = coreData.dateFormatter.dateFromString(textFieldTripDate.text)!
-            newTripObject.totalDistance = (textFieldTotalDistance.text as NSString).floatValue
-            newTripObject.totalCost = (textFieldTotalCost.text as NSString).floatValue
-            newTripObject.tripDescription = textFieldTripDescription.text
-            
-            println(newTripObject)
-            println("New TaskItem Object Saved.")
+        if (textFieldTripDescription.text == "") {
+            textViewDidEndEditing(textFieldTripDescription)
         }
+        var tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(tapDismiss)
+
+        var currentDate : NSDate? = NSDate()
+        textFieldTripDate.text = coreData.dateFormatter.stringFromDate(currentDate!)
+
         
-        // 3. Save our TaskItem object back into our data model.
-        context.save(nil)
-        
-        // 4. Navigate back to our main view controller.
-        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -158,14 +174,34 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissKeyboard(){
+        textFieldTripDescription.resignFirstResponder()
+    }
+    
+    func textViewDidEndEditing(descriptionTextView: UITextView) {
+        if (descriptionTextView.text == "") {
+            descriptionTextView.text = "Enter trip description..."
+            descriptionTextView.textColor = UIColor.lightGrayColor()
+        }
+        
+        textFieldTripDescription.resignFirstResponder()
+    }
+    func textViewDidBeginEditing(descriptionTextView: UITextView){
+        if (descriptionTextView.text == "Enter trip description..."){
+            descriptionTextView.text = ""
+            descriptionTextView.textColor = UIColor.blackColor()
+        }
+        
+        textFieldTripDescription.becomeFirstResponder()
+    }
 
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
         if identifier == "showLocation" {
             
-            if (textFieldOrigin.text.isEmpty || textFieldDestination.text.isEmpty || textFieldTripDate.text.isEmpty) {
+            if (textFieldTrip.text.isEmpty || textFieldDestination.text.isEmpty) {
                 
                 let alert = UIAlertView()
-                alert.title = "Location Fields Are Empty!"
+                alert.title = "Trip name field or destination field cannot be empty."
                 alert.message = "Please input your locations."
                 alert.addButtonWithTitle("OK")
                 alert.show()
