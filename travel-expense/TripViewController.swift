@@ -28,13 +28,14 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textFieldDestination: UITextField!
     @IBOutlet var textFieldTotalDistance: UITextField!
     @IBOutlet var textFieldTotalCost: UITextField!
-    @IBOutlet var textFieldTripDescription: UITextField!
+    //@IBOutlet var textFieldTripDescription: UITextField!
     @IBOutlet var buttonViewMap: UIButton!
+    @IBOutlet var textFieldTripDescription: UITextView!
     
     var trip : String = ""
     var origin : String = ""
     var destination : String = ""
-    var tripDate : NSDate = NSDate()
+    var tripDate : NSDate? = NSDate()
     var totalDistance : Float = 0.00
     var totalCost : Float = 0.00
     var tripDescription : String = ""
@@ -54,8 +55,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     func tripDateChanged(sender: UIDatePicker) {
         textFieldTripDate.text = coreData.dateFormatter.stringFromDate(sender.date)
     }
-    
-    
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         // Hide keyboard when clicking away from text field.
@@ -82,17 +81,18 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         textFieldTripDate.delegate = self
         textFieldTotalDistance.delegate = self
         textFieldTotalCost.delegate = self
-        textFieldTripDescription.delegate = self
+        //textFieldTripDescription.text = self
         
         if (existingTripObject != nil) {
             textFieldTrip.text = trip
             textFieldOrigin.text = origin
             textFieldDestination.text = destination
-            textFieldTripDate.text = coreData.dateFormatter.stringFromDate(tripDate)
+            textFieldTripDate.text = coreData.dateFormatter.stringFromDate(tripDate!)
             textFieldTotalDistance.text = totalDistance.description
             textFieldTotalCost.text = totalCost.description
             textFieldTripDescription.text = tripDescription
         }
+        
     }
     
     @IBAction func buttonCancel(sender: AnyObject) {
@@ -162,7 +162,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
         if identifier == "showLocation" {
             
-            if (textFieldOrigin.text.isEmpty || textFieldDestination.text.isEmpty) {
+            if (textFieldOrigin.text.isEmpty || textFieldDestination.text.isEmpty || textFieldTripDate.text.isEmpty) {
                 
                 let alert = UIAlertView()
                 alert.title = "Location Fields Are Empty!"
