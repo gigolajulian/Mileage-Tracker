@@ -17,7 +17,7 @@ import UIKit
 import MessageUI
 
 
-class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class EmailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, MFMailComposeViewControllerDelegate {
     
     let coreData: TripDataModel = TripDataModel()
     var trips : Array<Trip> = []
@@ -50,7 +50,27 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
         self.textFieldEmailAddress.text = ""
         self.textFieldSubject.text = ""
     }
-       func calculateTripReportSummary() {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        textFieldEmailAddress.delegate = self
+        textFieldSubject.delegate = self
+        textViewBody.delegate = self
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        // Hide keyboard when clicking away from text field.
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(allTextFields: UITextField) -> Bool {
+        // Hide keyboard when 'return' key is pressed.
+        allTextFields.resignFirstResponder()
+        return true
+    }
+    
+    func calculateTripReportSummary() {
         var totalCount = trips.count
         var totalTripsDistance : Float = 0.00
         var totalTripsCost : Float = 0.00
@@ -105,10 +125,6 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
             self.textViewBody.text = summaryPlainText
         }
     
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {
