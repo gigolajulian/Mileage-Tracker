@@ -41,9 +41,9 @@ DatePickerDelegate
     
     private var displayString_:NSString! = "Trips from: 1-1-2014 to: 12-31-2014"
  
-    private let cancelImg_:UIImage = UIImage(named:"CANCEL.png")!
+    private let cancelImg_:UIImage = UIImage(named:"CANCEL.png")
     //private let okImg_:UIImage = UIImage("OK.png")
-    private let calendarImg_:UIImage = UIImage(named:"CALENDAR.png")!
+    private let calendarImg_:UIImage = UIImage(named:"CALENDAR.png")
     
     // CRAP: No likey global static
     private var idx:UInt = 100000
@@ -61,8 +61,11 @@ DatePickerDelegate
     @IBAction func reportChange(sender: UISegmentedControl) {
         println(sender.selectedSegmentIndex)
         piePlot.reloadData()
-        tertiaryStatusBar.text = "Total: \(totalValue_(reportTypes[report.selectedSegmentIndex]))"
         
+        tertiaryStatusBar.text = "Total: " + buildStatusText_(
+            totalValue_(reportTypes[report.selectedSegmentIndex]))
+        
+        statusBar.text = "Click on legend to display value"
     }
     
     @IBAction func changeDate(sender: UIButton) {
@@ -138,6 +141,26 @@ DatePickerDelegate
             .reload()
     }
     
+    private func floatToStringFormat_(format:NSString, num:NSNumber) -> String {
+        return String(format: format, Float(num))
+    }
+    
+    private func buildStatusText_(num:NSNumber) -> String {
+        
+        var str:NSString = {
+            switch (self.report.selectedSegmentIndex) {
+            case 1:
+                return "$%@"
+            default:
+                return "%@"
+            }
+            }()
+        
+        return String(
+            format: str,
+            floatToStringFormat_("%.2f", num: num))
+    }
+    
     // MARK: Initialization
     
     override func viewDidLoad() {
@@ -172,13 +195,11 @@ DatePickerDelegate
         
         // set calendar button image
         changeDateButton.setBackgroundImage(calendarImg_, forState: UIControlState.Normal)
-        
-    
     }
     
     override func viewDidAppear(animated : Bool)
     {
-        println("view did appear")
+        //println("view did appear")
         super.viewDidAppear(animated)
         
         refreshDataSource_(-1)
@@ -186,8 +207,10 @@ DatePickerDelegate
         piePlot.reloadData()
         legendViewController_?.reloadData()
         
-        tertiaryStatusBar.text = "Total: \(totalValue_(reportTypes[report.selectedSegmentIndex]))"
+        tertiaryStatusBar.text = "Total: " + buildStatusText_(
+            totalValue_(reportTypes[report.selectedSegmentIndex]))
         
+        statusBar.text = "Click on legend to display value"
     }
 
     // MARK: - DatePickerDelegate Methods
@@ -230,7 +253,8 @@ DatePickerDelegate
         piePlot.reloadData()
         legendViewController_?.reloadData()
     
-        tertiaryStatusBar.text = "Total: \(totalValue_(reportTypes[report.selectedSegmentIndex]))"
+        tertiaryStatusBar.text = "Total:" +  buildStatusText_(
+            totalValue_(reportTypes[report.selectedSegmentIndex]))
         
     }
     
@@ -274,7 +298,7 @@ DatePickerDelegate
         var value = dataSource_.get(
             reportTypes[report.selectedSegmentIndex],
             index: Int(recordIndex)) as NSNumber
-        statusBar.text = "Value: \(value)"
+        statusBar.text = "Value: " + buildStatusText_(value)
         
         // CRAP: No likey global static
         idx = recordIndex
@@ -290,9 +314,7 @@ DatePickerDelegate
         var value:NSNumber = dataSource_.get(
             reportTypes[report.selectedSegmentIndex],
             index: Int(indexPath.row)) as NSNumber
-        statusBar.text = "Value: \(value)"
-        
-        println("Value: \(value)")
+        statusBar.text = "Value: " + buildStatusText_(value)
         
         // CRAP: No likey global static
         idx = UInt(indexPath.row)

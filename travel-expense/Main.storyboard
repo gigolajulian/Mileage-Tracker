@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kle-a8-IwB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kle-a8-IwB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -147,7 +147,7 @@
                                         <rect key="frame" x="8" y="11" width="371" height="223"/>
                                         <color key="backgroundColor" red="0.89642168030000002" green="1" blue="0.94175124970000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Click on legend to display" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piv-81-yPU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piv-81-yPU">
                                         <rect key="frame" x="152" y="95" width="128" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="SxA-KL-nf9"/>
@@ -164,13 +164,13 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="lSb-xs-mGY" firstAttribute="top" secondItem="iXw-x8-Z1v" secondAttribute="top" constant="5" id="1mC-zM-ywe"/>
+                                    <constraint firstItem="lSb-xs-mGY" firstAttribute="top" secondItem="iXw-x8-Z1v" secondAttribute="top" constant="10" id="1mC-zM-ywe"/>
                                     <constraint firstItem="R45-gf-ggc" firstAttribute="top" secondItem="iXw-x8-Z1v" secondAttribute="top" constant="2" id="1tv-wa-qD7"/>
                                     <constraint firstAttribute="trailing" secondItem="R45-gf-ggc" secondAttribute="trailing" constant="2" id="G88-Od-nnd"/>
                                     <constraint firstItem="R45-gf-ggc" firstAttribute="leading" secondItem="iXw-x8-Z1v" secondAttribute="leading" constant="2" id="NC8-Sd-bU6"/>
                                     <constraint firstAttribute="height" constant="246" id="O0h-2Y-tLC"/>
                                     <constraint firstAttribute="bottom" secondItem="piv-81-yPU" secondAttribute="bottom" constant="5" id="Rgj-79-r4u"/>
-                                    <constraint firstItem="lSb-xs-mGY" firstAttribute="leading" secondItem="iXw-x8-Z1v" secondAttribute="leading" constant="5" id="cEw-73-GPE"/>
+                                    <constraint firstItem="lSb-xs-mGY" firstAttribute="leading" secondItem="iXw-x8-Z1v" secondAttribute="leading" constant="10" id="cEw-73-GPE"/>
                                     <constraint firstAttribute="bottom" secondItem="R45-gf-ggc" secondAttribute="bottom" constant="2" id="wUE-EV-YhG"/>
                                     <constraint firstAttribute="trailing" secondItem="piv-81-yPU" secondAttribute="trailing" constant="5" id="wY3-ln-We2"/>
                                 </constraints>
