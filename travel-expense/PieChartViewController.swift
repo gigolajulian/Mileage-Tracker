@@ -41,9 +41,9 @@ DatePickerDelegate
     
     private var displayString_:NSString! = "Trips from: 1-1-2014 to: 12-31-2014"
  
-    private let cancelImg_:UIImage = UIImage(named:"CANCEL.png")
+    private let cancelImg_:UIImage = UIImage(named:"CANCEL.png")!
     //private let okImg_:UIImage = UIImage("OK.png")
-    private let calendarImg_:UIImage = UIImage(named:"CALENDAR.png")
+    private let calendarImg_:UIImage = UIImage(named:"CALENDAR.png")!
     
     // CRAP: No likey global static
     private var idx:UInt = 100000

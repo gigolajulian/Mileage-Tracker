@@ -146,7 +146,8 @@ class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         textFieldTotalCost.delegate = self
         textFieldTripDescription.delegate = self
         
-        if (existingTripObject != nil) {
+        if (existingTripObject != nil)
+        {
             textFieldTrip.text = trip
             textFieldOrigin.text = origin
             textFieldDestination.text = destination
@@ -155,16 +156,20 @@ class TripViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             textFieldTotalCost.text = totalCost.description
             textFieldTripDescription.text = tripDescription
         }
+        else
+        {
+            var currentDate : NSDate? = NSDate()
+            textFieldTripDate.text = coreData.dateFormatter.stringFromDate(currentDate!)
+        }
         
-        if (textFieldTripDescription.text == "") {
+        if (textFieldTripDescription.text == "")
+        {
             textViewDidEndEditing(textFieldTripDescription)
         }
         
         var tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapDismiss)
 
-        var currentDate : NSDate? = NSDate()
-        textFieldTripDate.text = coreData.dateFormatter.stringFromDate(currentDate!)
     }
 
     override func didReceiveMemoryWarning() {
